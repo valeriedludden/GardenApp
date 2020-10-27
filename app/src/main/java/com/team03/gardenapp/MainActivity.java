@@ -13,5 +13,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void doSomething(){
         // Comment from Jacob DeMille
+
+        for (int i = 1; i < 100; i++) {
+            System.out.println("Hello from Darrin");
+        }
     }
 }
