@@ -2,6 +2,7 @@
     <string name="app_name">Garden App</string>
     <string name="title_activity_main_screen">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">My Plants</string>
     <string name="title_notifications">Notifications</string>
+    <string name="welcome">Welcome</string>
 </resources>
