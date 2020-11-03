@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+//import com.google.common.truth.Truth.assertThat;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -22,5 +24,15 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.team03.gardenapp", appContext.getPackageName());
+    }
+    @Test
+    public void practiceTest() {
+
+        BasePlant plant = new BasePlant("Daisy");
+
+        assertEquals(plant.getName(), "Dais");
+
+        assertEquals(4, (3 + 2));
+
     }
 }
