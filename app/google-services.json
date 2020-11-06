@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "154982232720",
+    "firebase_url": "https://garden-ce58e.firebaseio.com",
+    "project_id": "garden-ce58e",
+    "storage_bucket": "garden-ce58e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154982232720:android:3bc3981ec6c05b01b79e15",
+        "android_client_info": {
+          "package_name": "com.team03.gardenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154982232720-lkb0rq49o0h43itff9sp97nj2roi7psj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKqF45r4L6yK4M1bPdqYIHemqc2Cp7OUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154982232720-lkb0rq49o0h43itff9sp97nj2roi7psj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

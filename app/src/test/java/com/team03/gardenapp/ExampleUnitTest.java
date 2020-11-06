@@ -13,5 +13,25 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+
     }
+
+    @Test
+    public void practiceTest() {
+
+        BasePlant plant = new BasePlant("Daisy");
+
+        assertEquals(plant.getName(), "Daisy");
+//        assertEquals(plant.getName(), "Dais");
+
+        assertEquals(4, (2 + 2));
+//        assertEquals(4, (3 + 2));
+
+    }
+    public void gotName(){
+//        assertNotNull(User.name);
+    }
+//    public void gotName(){
+//        assertNotNull(BasePlant.name);
+//    }
 }
