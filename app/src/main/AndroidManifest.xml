@@ -12,6 +12,15 @@
         <activity
             android:name=".MainActivityScreen"
             android:label="@string/title_activity_main_screen">
+
+<!--What Valerie put in -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+<!--     stop what valerie put in       -->
+
         </activity>
     </application>
 
