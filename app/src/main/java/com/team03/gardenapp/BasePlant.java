@@ -1,20 +1,33 @@
 package com.team03.gardenapp;
 
+import java.util.ArrayList;
+
 public class BasePlant {
-    private String name;
     private String id;
-    private String lastWatered;
+    private String name;
+    private String fertilizer;
+    private String notes;
+    private boolean petFriendly;
+    private String picture;
+    private String scientificName;
     private String sunlight;
     private String type;
+//    private ArrayList<Varieties> todo make varieties class and add to constructor and add getters/setters
     private String waterAmount;
     private String waterFrequency;
 
     public BasePlant(){}
 
-    public BasePlant(String name, String id, String lastWatered, String sunlight, String type, String waterAmount, String waterFrequency) {
+    public BasePlant(String id, String name,  String fertilizer, String notes, boolean petFriendly,
+                     String picture, String scientificName, String sunlight, String type,
+                     String waterAmount, String waterFrequency) {
         this.name = name;
         this.id = id;
-        this.lastWatered = lastWatered;
+        this.fertilizer = fertilizer;
+        this.notes = notes;
+        this. petFriendly = petFriendly;
+        this.picture = picture;
+        this.scientificName = scientificName;
         this.sunlight = sunlight;
         this.type = type;
         this.waterAmount = waterAmount;
@@ -35,14 +48,6 @@ public class BasePlant {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getLastWatered() {
-        return lastWatered;
-    }
-
-    public void setLastWatered(String lastWatered) {
-        this.lastWatered = lastWatered;
     }
 
     public String getSunlight() {
@@ -75,5 +80,45 @@ public class BasePlant {
 
     public void setWaterFrequency(String waterFrequency) {
         this.waterFrequency = waterFrequency;
+    }
+
+    public String getFertilizer() {
+        return fertilizer;
+    }
+
+    public void setFertilizer(String fertilizer) {
+        this.fertilizer = fertilizer;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public boolean isPetFriendly() {
+        return petFriendly;
+    }
+
+    public void setPetFriendly(boolean petFriendly) {
+        this.petFriendly = petFriendly;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getScientificName() {
+        return scientificName;
+    }
+
+    public void setScientificName(String scientificName) {
+        this.scientificName = scientificName;
     }
 }
