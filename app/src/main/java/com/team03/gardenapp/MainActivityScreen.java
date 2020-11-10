@@ -27,19 +27,6 @@ public class MainActivityScreen extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        //Valerie test section
-
-        String val = "AAAAAAAAAAAAAAAAAAAA";
-        System.out.println(val);
-        System.out.println(val);
-        System.out.println(val);
-        System.out.println(val);
-        System.out.println(val);
-        System.out.println(val);
-        Log.d("**************** = ", val);
-        FirebaseUtil.openFbReference("BasePlants");
-        Log.d("PLANTS = ", String.valueOf(FirebaseUtil.mFirebaseDatabase));
-
     }
 
 }
