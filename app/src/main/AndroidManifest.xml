@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ListBasePlants"
+            android:name=".MainActivityScreen"
             android:label="Base">
 
 <!--What Valerie put in -->
