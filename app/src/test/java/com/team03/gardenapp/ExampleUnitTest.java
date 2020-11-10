@@ -19,7 +19,7 @@ public class ExampleUnitTest {
     @Test
     public void practiceTest() {
 
-        BasePlant plant = new BasePlant("Daisy");
+        BasePlant plant = new BasePlant("Daisy", id, lastWatered, sunlight, type, waterAmount, waterFrequency);
 
         assertEquals(plant.getName(), "Daisy");
 //        assertEquals(plant.getName(), "Dais");
