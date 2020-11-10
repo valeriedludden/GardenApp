@@ -9,4 +9,5 @@
     <string name="notification">Notifications</string>
     <string name="find_plants">Find Plants</string>
     <string name="button_add_plants">Add Plants</string>
+    <string name="image_of_hands_holding_plants">image_of_hands_holding_plants</string>
 </resources>
