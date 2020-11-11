@@ -10,4 +10,9 @@
     <string name="find_plants">Find Plants</string>
     <string name="button_add_plants">Add Plants</string>
     <string name="image_of_hands_holding_plants">image_of_hands_holding_plants</string>
+    <string name="android_version">Android Version</string>
+    <string name="android_name">Android Name</string>
+    <string name="plant_name" />
+    <string name="plant_type" />
+    <string name="placeholderimage" />
 </resources>
