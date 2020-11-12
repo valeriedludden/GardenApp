@@ -98,7 +98,7 @@ public class BasePlant {
         this.notes = notes;
     }
 
-    public boolean isPetFriendly() {
+    public boolean getIsPetFriendly() {
         return petFriendly;
     }
 

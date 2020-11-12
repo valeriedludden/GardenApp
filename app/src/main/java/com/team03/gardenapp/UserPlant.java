@@ -14,6 +14,7 @@ public class UserPlant extends BasePlant{
       super(id, name, fertilizer, notes,petFriendly,
         picture, scientificName, sunlight, type,
               waterAmount, waterFrequency);
+
       this.lastWatered = lastWatered;
       this.nextWatered = nextWatered;
       this.nickname = nickname;
@@ -43,4 +44,5 @@ public class UserPlant extends BasePlant{
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
 }
