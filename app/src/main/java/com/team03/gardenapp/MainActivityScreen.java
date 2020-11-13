@@ -38,7 +38,8 @@ public class MainActivityScreen extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         mAuth = FirebaseAuth.getInstance();
-        mButtonSignOut = (Button) findViewById(R.id.btnSignout);
+//        mButtonSignOut = (Button) findViewById(R.id.btnSignout);
+        mButtonSignOut = (Button) find(R.id.btnSignout);
 
         mButtonSignOut.setOnClickListener(new View.OnClickListener() {
             @Override

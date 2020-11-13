@@ -37,7 +37,7 @@
         android:layout_width="294dp"
         android:layout_height="49dp"
         android:layout_marginTop="24dp"
-        android:text="Login"
+        android:hint="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
