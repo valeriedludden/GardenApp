@@ -31,8 +31,8 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/placeholderimage"
-                android:src="https://cdn.pixabay.com/photo/2018/04/02/07/42/leaf-3283175_960_720.jpg"
-                android:tag="image_tag" />
+                android:tag="image_tag"/>
+<!--                android:src="https://cdn.pixabay.com/photo/2018/04/02/07/42/leaf-3283175_960_720.jpg"/>-->
 
             <TextView
                 android:id="@+id/textViewName"

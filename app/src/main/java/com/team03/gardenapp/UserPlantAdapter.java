@@ -34,7 +34,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserPlantViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserPlantViewHolder holder, final int position) {
         holder.tvName.setText(mData.get(position).getName());
         holder.tvSunlight.setText(mData.get(position).getSunlight());
         holder.tvLastWatered.setText(mData.get(position).getLastWatered());
@@ -44,19 +44,18 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         else{
             holder.tvPetFriendly.setText("false");
         }
-
-
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(mContext,UserPlant_Activity.class);
+                Intent intent = new Intent(mContext,UserPlantActivity.class);
 
-                // passing data to the book activity
-                intent.putExtra("Title",mData.get(position).getTitle());
-                intent.putExtra("Description",mData.get(position).getDescription());
-                intent.putExtra("Thumbnail",mData.get(position).getThumbnail());
+                // passing data to the user plant activity
+                intent.putExtra("Name",mData.get(position).getName());
+                intent.putExtra("Sunlight",mData.get(position).getSunlight());
+                intent.putExtra("LastWatered",mData.get(position).getLastWatered());
+                intent.putExtra("PetFriendly",mData.get(position).getIsPetFriendly());
+
                 // start the activity
                 mContext.startActivity(intent);
 
@@ -69,7 +68,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         return mData.size();
     }
 
-    private static class UserPlantViewHolder {
+    public static class UserPlantViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
         TextView tvSunlight;
         TextView tvLastWatered;
@@ -78,11 +77,13 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 
         public UserPlantViewHolder(View itemView){
             super(itemView);
-            tvName = (TextView) itemView.findViewById(R.id.plant_name_id);
-            tvSunlight = (TextView) itemView.findViewById(R.id.plant_name_id);
-            tvLastWatered = (TextView) itemView.findViewById(R.id.plant_name_id);
-            tvPetFriendly = (TextView) itemView.findViewById(R.id.plant_name_id);
-            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
+
+            //todo need to hook up to the recycle view
+//            tvName = (TextView) itemView.findViewById(R.id.plant_name_id);
+//            tvSunlight = (TextView) itemView.findViewById(R.id.plant_name_id);
+//            tvLastWatered = (TextView) itemView.findViewById(R.id.plant_name_id);
+//            tvPetFriendly = (TextView) itemView.findViewById(R.id.plant_name_id);
+//            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 
 
         }
