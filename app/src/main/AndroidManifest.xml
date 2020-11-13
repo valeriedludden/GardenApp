@@ -9,19 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivityScreen"
-            android:label="Base">
-
-<!--What Valerie put in -->
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-<!--     stop what valerie put in       -->
-
-        </activity>
+            </intent-filter></activity>
+        <activity android:name=".LogIn"></activity>
     </application>
 
 </manifest>
