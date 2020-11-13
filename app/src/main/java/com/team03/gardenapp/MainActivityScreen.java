@@ -1,10 +1,7 @@
 package com.team03.gardenapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -33,22 +30,21 @@ public class MainActivityScreen extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.btnSignout);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        mAuth = FirebaseAuth.getInstance();
+//        mAuth = FirebaseAuth.getInstance();
 //        mButtonSignOut = (Button) findViewById(R.id.btnSignout);
-        mButtonSignOut = (Button) find(R.id.btnSignout);
-
-        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                startActivity(new Intent(MainActivityScreen.this, LogIn.class));
-                finish();
-            }
-        });
+//
+//        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mAuth.signOut();
+//                startActivity(new Intent(MainActivityScreen.this, LogIn.class));
+//                finish();
+//            }
+//        });
 
     }
 
