@@ -15,4 +15,8 @@
     <string name="plant_name" />
     <string name="plant_type" />
     <string name="placeholderimage" />
+    <string name="image_background_for_login_page">Image background for login page</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>
