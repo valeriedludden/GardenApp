@@ -16,7 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivityScreen extends AppCompatActivity {
 
-    private Button mButtonSignOut;
+//    private Button mButtonSignOut;
     private FirebaseAuth mAuth;
 
 
@@ -34,9 +34,9 @@ public class MainActivityScreen extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-//        mAuth = FirebaseAuth.getInstance();
-//        mButtonSignOut = (Button) findViewById(R.id.btnSignout);
-//
+        mAuth = FirebaseAuth.getInstance();
+//        final Button mButtonSignOut = findViewById(R.id.btnSignout);
+
 //        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
