@@ -7,23 +7,20 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:sharedUserId="android.uid.system"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:sharedUserId="android.uid.system">
+        android:theme="@style/AppTheme">
+        <activity android:name=".BottomNavigation"></activity>
+        <activity android:name=".Botton_Nav_Test" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
-        <activity android:name=".LogIn"></activity>
-
-        <activity android:name=".MainActivityScreen"> </activity>
-
-
-
-
-
+            </intent-filter>
+        </activity>
+        <activity android:name=".LogIn" />
+        <activity android:name=".MainActivityScreen" />
     </application>
 
 </manifest>
