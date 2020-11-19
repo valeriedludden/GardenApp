@@ -10,8 +10,8 @@
         android:sharedUserId="android.uid.system"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BottomNavigation"></activity>
-        <activity android:name=".Botton_Nav_Test" />
+        <activity android:name=".MyPlants" />
+        <activity android:name=".BottomNavigation" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
