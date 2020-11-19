@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <menu />
+    <item android:id="@+id/insert_menu"
+        android:title="Menu Item"
+        app:showAsAction="never"/>
+    <item android:id="@+id/save_menu"
+        android:title="Save"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/save_a_menu"
+        android:icon="?attr/actionModeCutDrawable"
+        android:title="Save1"
+        app:showAsAction="always" />
+    <item android:id="@+id/save_b_menu"
+        android:title="Save2"
+        app:showAsAction="always"/>
+    <item android:id="@+id/save_c_menu"
+        android:title="Save3"
+        app:showAsAction="always"/>
+
+
+</menu>
