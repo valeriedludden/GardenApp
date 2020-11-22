@@ -22,7 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivityScreen extends AppCompatActivity {
 
-    //    private Button mButtonSignOut;
+    private Button mButtonSignOut;
     private FirebaseAuth mAuth;
     private String TAG = "MAIN MENU";
 
@@ -55,18 +55,28 @@ public class MainActivityScreen extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-//        final Button mButtonSignOut = findViewById(R.id.btnSignout);
+        mButtonSignOut = (Button) findViewById(R.id.btnSignout);
 
-//        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mAuth.signOut();
-//                startActivity(new Intent(MainActivityScreen.this, LogIn.class));
-//                finish();
-//            }
-//        });
+        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                startActivity(new Intent(MainActivityScreen.this, LoginActivity.class));
+                finish();
+            }
+        });
 
     }
+
+    public void toLogin(View view) {
+        mAuth = FirebaseAuth.getInstance();
+        // mButtonSignOut = (Button) findViewById(R.id.btnSignout);
+        mAuth.signOut();
+        Intent intent = new Intent(MainActivityScreen.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
