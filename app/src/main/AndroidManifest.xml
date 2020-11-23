@@ -10,7 +10,12 @@
         android:sharedUserId="android.uid.system"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyPlants" />
+        <activity android:name=".MyPlants"
+            android:parentActivityName=".BottomNavigation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BottomNavigation" />
+        </activity>
         <activity android:name=".BottomNavigation" />
         <activity android:name=".LoginActivity">
             <intent-filter>

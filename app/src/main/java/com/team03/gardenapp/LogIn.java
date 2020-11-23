@@ -47,7 +47,7 @@ public class LogIn extends AppCompatActivity {
 
         mEditTextName = (EditText) findViewById(R.id.editTextName);
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        mEditTextPassword = (EditText) findViewById(R.id.editTextTextPassword);
         mButtonRegister = (Button) findViewById(R.id.btnRegister);
         mButtonSendToLogin = (Button) findViewById(R.id.btnSignout);
 
@@ -75,13 +75,11 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
-        mButtonSendToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LogIn.this, LoginActivity.class));
-            }
-        });
+    }
 
+    public void toLogin(View view) {
+        Intent intent = new Intent(LogIn.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     private void registerUser(){
@@ -101,7 +99,7 @@ public class LogIn extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()){
-                                startActivity(new Intent(LogIn.this, MainActivityScreen.class));
+                                startActivity(new Intent(LogIn.this, LoginActivity.class));
                                 finish();
                             }
                             else {

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,7 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivityScreen extends AppCompatActivity {
 
-    //    private Button mButtonSignOut;
+    private Button mButtonSignOut;
     private FirebaseAuth mAuth;
     private String TAG = "MAIN MENU";
 
@@ -29,22 +30,53 @@ public class MainActivityScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_screen);
+        setContentView(R.layout.activity_bottom_navigation);
+
+
+        //Logic for bottom navigation bar
+        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent intent = new Intent(bottomNavigationView.getContext(), BottomNavigation.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.navigation_plants:
+                        Intent intent2 = new Intent(bottomNavigationView.getContext(), MyPlants.class);
+                        startActivity(intent2);
+                        return true;
+                }
+                return true;
+            }
+
+        });
 
 
         mAuth = FirebaseAuth.getInstance();
-//        final Button mButtonSignOut = findViewById(R.id.btnSignout);
+        mButtonSignOut = (Button) findViewById(R.id.btnSignout);
 
-//        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mAuth.signOut();
-//                startActivity(new Intent(MainActivityScreen.this, LogIn.class));
-//                finish();
-//            }
-//        });
+        mButtonSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                startActivity(new Intent(MainActivityScreen.this, LoginActivity.class));
+                finish();
+            }
+        });
 
     }
+
+    public void toLogin(View view) {
+        mAuth = FirebaseAuth.getInstance();
+        // mButtonSignOut = (Button) findViewById(R.id.btnSignout);
+        mAuth.signOut();
+        Intent intent = new Intent(MainActivityScreen.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -55,22 +87,18 @@ public class MainActivityScreen extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.save_menu:
-//                Intent intent = new Intent(this, DealActivity.class);
-//                startActivity(intent);
+            // Tried to get the navigation buttons to open the
+            // correct screen but still trying to figure that out - Jacob
+
+            case R.id.navigation_plants:
+                Intent intent = new Intent(this, MyPlants.class);
+                startActivity(intent);
                 return true;
-            case R.id.save_a_menu:
-                Log.d(TAG, "SAVE AAAAAA");
-                Toast.makeText(this, "SAVE AAAA", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.save_b_menu:
-                Log.d(TAG, "SAVE BBBBBB");
-                Toast.makeText(this, "SAVE BBBB", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.save_c_menu:
-                Log.d(TAG, "SAVE CCCCCCCC");
-                Toast.makeText(this, "SAVE CCCC", Toast.LENGTH_LONG).show();
-                break;
+            case R.id.navigation_home:
+                Intent intent2 = new Intent(this, BottomNavigation.class);
+                startActivity(intent2);
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

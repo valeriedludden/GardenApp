@@ -56,6 +56,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void toRegister(View view) {
+        Intent intent = new Intent(LoginActivity.this, LogIn.class);
+        startActivity(intent);
+    }
+
     private void loginUser(){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
