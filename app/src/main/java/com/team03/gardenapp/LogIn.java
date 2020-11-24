@@ -20,6 +20,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * This class Is for the first activity shown unto the user
+ *
+ * Asks for the @param name, @param email and the @param password
+ *
+ * <p>Use {@link #toLogin(View)}  to go to the Log in Activity.
+ * <p>Use {@link #registerUser()}  to add on the database the new user with the email and password.
+ *
+ */
+
+
 public class LogIn extends AppCompatActivity {
 
     private EditText mEditTextName;

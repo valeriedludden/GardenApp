@@ -15,6 +15,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+/**
+ * This class Is for the first activity shown unto the user
+ *
+ * Asks for the @param email and the @param password
+ *
+ * <p>Use {@link #toRegister(View)} ()} to go to the Registration Activity.
+ * <p>Use {@link #loginUser()} to go to start the app.
+ *
+ */
+
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mEditTextEmail;
