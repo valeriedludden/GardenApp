@@ -1,8 +1,9 @@
 package com.team03.gardenapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BasePlant {
+public class BasePlant implements Serializable {
     private String id;
     private String name;
     private String fertilizer;
