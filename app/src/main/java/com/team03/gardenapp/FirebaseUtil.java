@@ -9,12 +9,15 @@ public class FirebaseUtil {
     public static DatabaseReference mDatabaseReference;
     private static FirebaseUtil firebaseUtil;
     public static ArrayList<BasePlant> mBasePlants;
+    public static ArrayList<UserPlant> mUserPlants;
+    private String ref;
 
     private FirebaseUtil(){
-
+        this.ref = "BasePlants";
     }
 
-    public static void openFbReference(String ref){
+    // Not in use yet
+    public void openFbReference(){
         if(firebaseUtil == null){
             firebaseUtil = new FirebaseUtil();
             mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -22,6 +25,15 @@ public class FirebaseUtil {
 
         // todo Maybe add a switch case to account for what kind of data is being brought back - Baseplant, UserPlant, User info
         mBasePlants = new ArrayList<BasePlant>();
-        mDatabaseReference = mFirebaseDatabase.getReference().child(ref);
+        mDatabaseReference = mFirebaseDatabase.getReference().child(this.ref);
+    }
+
+    public static void getUserPlants(String user){
+        if(firebaseUtil == null){
+            firebaseUtil = new FirebaseUtil();
+            mFirebaseDatabase = FirebaseDatabase.getInstance();
+        }
+        mUserPlants = new ArrayList<UserPlant>();
+        mDatabaseReference = mFirebaseDatabase.getReference().child("Users").child(user).child("plants");
     }
 }

@@ -1,6 +1,8 @@
 package com.team03.gardenapp;
 
-public class UserPlant extends BasePlant{
+import java.io.Serializable;
+
+public class UserPlant extends BasePlant implements Serializable {
 
     private String lastWatered;
     private String nextWatered;
