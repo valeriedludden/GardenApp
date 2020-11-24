@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +113,10 @@ public class MyPlants extends AppCompatActivity {
                         String sunlight=dataSnapshot.child("sunlight").getValue().toString();
                         String water=dataSnapshot.child("waterAmount").getValue().toString();
                         String freq=dataSnapshot.child("waterFrequency").getValue().toString();
+                        String imageUrl=dataSnapshot.child("picture").getValue().toString();
+
+                        ImageView imageView = findViewById(R.id.image_view);
+                        Picasso.get().load(imageUrl).into(imageView);
                         a.setText(name);
                         b.setText(sunlight);
                         c.setText(water);
