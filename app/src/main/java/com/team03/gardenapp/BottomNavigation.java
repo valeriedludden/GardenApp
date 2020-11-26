@@ -10,13 +10,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class BottomNavigation extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
+
+        mAuth = FirebaseAuth.getInstance();
 
         //Logic for bottom navigation bar
         final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
@@ -38,6 +43,20 @@ public class BottomNavigation extends AppCompatActivity {
 
         });
 
+    }
+
+    public void toUserInfo(View view) {
+        Intent intent = new Intent(BottomNavigation.this, GetUserInfo.class);
+        startActivity(intent);
+    }
+
+    public void toLogin(View view) {
+        mAuth = FirebaseAuth.getInstance();
+        // mButtonSignOut = (Button) findViewById(R.id.btnSignout);
+        mAuth.signOut();
+        Intent intent = new Intent(BottomNavigation.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 

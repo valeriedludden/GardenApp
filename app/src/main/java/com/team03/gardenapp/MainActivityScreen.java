@@ -22,6 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivityScreen extends AppCompatActivity {
 
+    private Button user_info;
     private Button mButtonSignOut;
     private FirebaseAuth mAuth;
     private String TAG = "MAIN MENU";
@@ -56,6 +57,7 @@ public class MainActivityScreen extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mButtonSignOut = (Button) findViewById(R.id.btnSignout);
+        user_info = findViewById(R.id.user_info);
 
         mButtonSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,13 @@ public class MainActivityScreen extends AppCompatActivity {
                 mAuth.signOut();
                 startActivity(new Intent(MainActivityScreen.this, LoginActivity.class));
                 finish();
+            }
+        });
+
+        user_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivityScreen.this, MyPlants.class));
             }
         });
 
@@ -76,6 +85,13 @@ public class MainActivityScreen extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+
+    public void toUserInfo(View view) {
+        Intent intent = new Intent(MainActivityScreen.this, GetUserInfo.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -102,5 +118,6 @@ public class MainActivityScreen extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }
