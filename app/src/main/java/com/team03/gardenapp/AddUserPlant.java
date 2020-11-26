@@ -30,114 +30,136 @@ public class AddUserPlant extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final TextView a,b,c,d;
+        final TextView mFertilizer,mName,mNotes,mPetFriendly, mPicture, mScientificName, mSunlight, mType,mWaterAmount, mwWaterFrequency;
         Button btn;
+        final Button btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
-
+        final BasePlant basePlant = new BasePlant();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user_plants);
+        mFertilizer=(TextView)findViewById(R.id.fertilizerView);
+        mName=(TextView)findViewById(R.id.nameView);
+        mNotes=(TextView)findViewById(R.id.noteView);
+        mPetFriendly=(TextView)findViewById(R.id.petFriendlyView);
+        mScientificName=(TextView)findViewById(R.id.scientificNameView);
+        mSunlight=(TextView)findViewById(R.id.sunlightView);
+        mType=(TextView)findViewById(R.id.typeView);
+        mWaterAmount=(TextView)findViewById(R.id.waterAmountView);
+        mwWaterFrequency=(TextView)findViewById(R.id.waterFrequencyView);
+        btn=(Button)findViewById(R.id.btnload);
+        btnSave=(Button)findViewById(R.id.btnSave);
 
+        final String username = "2";
 
-            //Test variables for displaying data on the screen
-            a=(TextView)findViewById(R.id.nameView);
-            b=(TextView)findViewById(R.id.ageView);
-            c=(TextView)findViewById(R.id.htView);
-            d=(TextView)findViewById(R.id.phView);
-            btn=(Button)findViewById(R.id.btnload);
+        //THIS IS THE SPINNER
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference fDatabaseRoot = database.getReference();
 
-            //THIS IS THE SPINNER
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference fDatabaseRoot = database.getReference();
+        fDatabaseRoot.child("BasePlants").child("plants").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<String> plantsList = new ArrayList<String>();
+                //get the plant names from the database snapshot and, if they are not null, add them to the plantlist List.
+                for (DataSnapshot plantsSnapshot: dataSnapshot.getChildren()) {
+                    String plantName = plantsSnapshot.child("name").getValue(String.class);
+                    if (plantName!=null){
+                        plantsList.add(plantName);
+                    }
+                }
+                //make the spinner and pass it into the ArrayAdapter
+                final Spinner plantSpinner = (Spinner) findViewById(R.id.plantSpinner);
+                ArrayAdapter<String> plantAdapter = new ArrayAdapter<String>(AddUserPlant.this, android.R.layout.simple_spinner_item, plantsList);
+                plantAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                plantSpinner.setAdapter(plantAdapter);
 
-            fDatabaseRoot.child("BasePlants").child("plants").addListenerForSingleValueEvent(new ValueEventListener() {
+                plantSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+                        //Get the String data from teh current selection
+                        String Text = plantSpinner.getItemAtPosition(plantSpinner.getSelectedItemPosition()).toString();
+
+                        //pass the string data into the variable for use in other tasks
+                        userInput[0] = Text;
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {}
+                });
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+            //print out the variable to confirm that it has been properly selected.
+            System.out.println(userInput[0]);
+            //call the database and pass in the userInput to pull the correct entry.
+            reff[0] = FirebaseDatabase.getInstance().getReference().child("BasePlants").child("plants").child(userInput[0]);
+            reff[0].addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Toast.makeText(AddUserPlant.this, "Plant data loaded successfully", Toast.LENGTH_SHORT).show();
+                    //populate the fields on the screen with some data from the database.
+                    final String fertilizer=dataSnapshot.child("fertilizer").getValue().toString();
+                    final String name=dataSnapshot.child("name").getValue().toString();
+                    final String notes=dataSnapshot.child("notes").getValue().toString();
+                    //String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
+                    final String scientificName=dataSnapshot.child("scientificName").getValue().toString();
+                    final String sunlight=dataSnapshot.child("sunlight").getValue().toString();
+                    final String type=dataSnapshot.child("type").getValue().toString();
+                    final String waterAmount=dataSnapshot.child("waterAmount").getValue().toString();
+                    final String waterFrequency=dataSnapshot.child("waterFrequency").getValue().toString();
 
-                    final List<String> plantsList = new ArrayList<String>();
-
-                    //get the plant names from the database snapshot and, if they are not null, add them to the plantlist List.
-                    for (DataSnapshot plantsSnapshot: dataSnapshot.getChildren()) {
-                        String plantName = plantsSnapshot.child("name").getValue(String.class);
-                        if (plantName!=null){
-                            plantsList.add(plantName);
-                        }
+                    if (dataSnapshot.child("petFriendly").getValue() != null) {
+                        String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
+                        mPetFriendly.setText(petFriendly);
+                    } else {
+                       String petFriendly = "No Data";
+                        mPetFriendly.setText(petFriendly);
                     }
 
-                    //make the spinner and pass it into the ArrayAdapter
-                    final Spinner plantSpinner = (Spinner) findViewById(R.id.plantSpinner);
-                    ArrayAdapter<String> plantAdapter = new ArrayAdapter<String>(AddUserPlant.this, android.R.layout.simple_spinner_item, plantsList);
-                    plantAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    plantSpinner.setAdapter(plantAdapter);
+                    String imageUrl=dataSnapshot.child("picture").getValue().toString();
+                    ImageView imageView = findViewById(R.id.image_view);
+                    Picasso.get().load(imageUrl).into(imageView);
 
-                    plantSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    mFertilizer.setText(fertilizer);
+                    mName.setText(name);
+                    mNotes.setText(notes);
+                    //mPetFriendly.setText(petFriendly);
+                    mScientificName.setText(scientificName);
+                    mSunlight.setText(sunlight);
+                    mType.setText(type);
+                    mWaterAmount.setText(waterAmount);
+                    mwWaterFrequency.setText(waterFrequency);
+
+                    //This code adds takes the data from the currently viewed plant and adds it to the users database.
+                    btnSave.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        public void onClick(View v) {
+                            basePlant.setFertilizer(fertilizer);
+                            basePlant.setName(name);
+                            basePlant.setNotes(notes);
+                            //basePlant.setPetFriendly(petFriendly);
+                            basePlant.setScientificName(scientificName);
+                            basePlant.setSunlight(sunlight);
+                            basePlant.setType(type);
+                            basePlant.setWaterAmount(waterAmount);
+                            basePlant.setWaterFrequency(waterFrequency);
 
-                            //Get the String data from teh current selection
-                            String Text = plantSpinner.getItemAtPosition(plantSpinner.getSelectedItemPosition()).toString();
-
-                            //pass the string data into the variable for use in other tasks
-                            userInput[0] = Text;
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parentView) {
-
-                        }
-                    });
-
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            // THIS IS FOR TESTING AND DEMO
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    //print out the variable to confirm that it has been properly selected.
-                    System.out.println(userInput[0]);
-
-                    //call the database and pass in the userInput to pull the correct entry.
-                    reff[0] = FirebaseDatabase.getInstance().getReference().child("BasePlants").child("plants").child(userInput[0]);
-                    reff[0].addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            Toast.makeText(AddUserPlant.this, "Plant data loaded successfully", Toast.LENGTH_SHORT).show();
-
-                            //populate the fields on the screen with some data from the database.
-                            String name=dataSnapshot.child("name").getValue().toString();
-                            String sunlight=dataSnapshot.child("sunlight").getValue().toString();
-                            String water=dataSnapshot.child("waterAmount").getValue().toString();
-                            String freq=dataSnapshot.child("waterFrequency").getValue().toString();
-                            String imageUrl=dataSnapshot.child("picture").getValue().toString();
-
-                            ImageView imageView = findViewById(R.id.image_view);
-                            Picasso.get().load(imageUrl).into(imageView);
-                            a.setText(name);
-                            b.setText(sunlight);
-                            c.setText(water);
-                            d.setText(freq);
-
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
+                            DatabaseReference databasePushReference = databasePush.getReference();
+                            //Note: the .child(username) refrerences a variable that should be the users database ID. For now, it is hard coded as "2"
+                            databasePushReference.child("Users").child(username).child("plants").child(name).setValue(basePlant);
                         }
                     });
-
-
                 }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {}
             });
-
-
-        }
-
-
+            }
+        });
+    }
 }
