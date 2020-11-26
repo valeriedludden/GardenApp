@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class BottomNavigation extends AppCompatActivity {
 
@@ -41,6 +42,14 @@ public class BottomNavigation extends AppCompatActivity {
                 return true;
             }
 
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BottomNavigation.this, AddUserPlant.class));
+            }
         });
 
     }
