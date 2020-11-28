@@ -33,4 +33,5 @@
     <string name="water_frequency">water frequency</string>
     <string name="show">Show</string>
     <string name="save">Save</string>
+    <string name="image_of_selected_plant">image of selected plant</string>
 </resources>
