@@ -34,4 +34,12 @@
     <string name="show">Show</string>
     <string name="save">Save</string>
     <string name="image_of_selected_plant">image of selected plant</string>
+    <string name="name_of_plant">Name of Plant</string>
+    <string name="sunshine_needed">Sunshine Needed</string>
+    <string name="last_watered">Last Watered</string>
+    <string name="is_pet_friendly">Is Pet Friendly</string>
+    <string name="todo">Image of Plant</string>
+    <string name="image_of_plant" />
+    <string name="user_info">User Info</string>
+    <string name="table_with_plants_and_watering_spout">Table with plants and watering spout</string>
 </resources>
