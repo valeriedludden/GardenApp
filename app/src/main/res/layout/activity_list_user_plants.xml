@@ -5,7 +5,7 @@
     android:id="@+id/my_plant_words"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListUserPlants">
+    tools:context=".MyPlants">
 
 
     <androidx.recyclerview.widget.RecyclerView

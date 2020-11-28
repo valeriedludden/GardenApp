@@ -35,7 +35,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 UserPlant up = dataSnapshot.getValue(UserPlant.class);
-                Log.d("Name", up.getName());
                 up.setId(dataSnapshot.getKey());
                 userPlants.add(up);
                 notifyItemInserted(userPlants.size()-1);
@@ -67,10 +66,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 
     @Override
     public UserPlantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View view;
-//        LayoutInflater mInflater = LayoutInflater.from(mContext);
-//        view = mInflater.inflate(R.layout.cardview_item_plant,parent,false);
-//        return new UserPlantViewHolder(view);
         Context context = parent.getContext();
         View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.rv_row, parent, false);
@@ -83,7 +78,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         holder.bind(plant);
     }
     @Override
-    public int getItemCount(){ Log.d("Adapter", "USER COUNT IS " + userPlants.size() );return userPlants.size();}
+    public int getItemCount(){ return userPlants.size();}
 
     public class UserPlantViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
@@ -114,7 +109,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
-            Log.d("Click", String.valueOf(position));
             UserPlant selectedPlant = userPlants.get(position);
             Intent intent = new Intent(view.getContext(), UserPlantActivity.class);
             intent.putExtra("User Plant", selectedPlant);
