@@ -12,7 +12,7 @@
         android:sharedUserId="android.uid.system"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GetUserInfo"></activity>
+        <activity android:name=".GetUserInfo" />
         <activity
             android:name=".MyPlants"
             android:parentActivityName=".BottomNavigation">
@@ -30,7 +30,13 @@
         </activity>
         <activity android:name=".LogIn" />
         <activity android:name=".MainActivityScreen" />
-        <activity android:name=".AddUserPlant" />
+        <activity
+            android:name=".AddUserPlant"
+            android:parentActivityName=".BottomNavigation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BottomNavigation"/>
+        </activity>
     </application>
 
 </manifest>

@@ -21,4 +21,16 @@
     <string name="login">Login</string>
     <string name="close">Close</string>
     <string name="sign_out">Sign Out</string>
+    <string name="not_currently_in_use" />
+    <string name="fertilizer">fertilizer</string>
+    <string name="name">name</string>
+    <string name="notes">notes</string>
+    <string name="pet_friendly">pet Friendly</string>
+    <string name="scientific_name">scientific name</string>
+    <string name="sunlight">sunlight</string>
+    <string name="type">type</string>
+    <string name="water_amount">water amount</string>
+    <string name="water_frequency">water frequency</string>
+    <string name="show">Show</string>
+    <string name="save">Save</string>
 </resources>

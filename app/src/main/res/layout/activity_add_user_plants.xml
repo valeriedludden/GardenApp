@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
 
     <TextView
         android:id="@+id/fertilizerView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="fertilizer" />
+        android:layout_marginTop="32dp"
+        android:text="@string/fertilizer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scientificNameView" />
 
     <TextView
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="161dp"
-        android:layout_marginEnd="92dp"
-        android:layout_marginRight="92dp"
-        android:text="name" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="112dp"
+        android:layout_marginRight="112dp"
+        android:text="@string/name"
+        app:layout_constraintBaseline_toBaselineOf="@+id/typeView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <TextView
         android:id="@+id/noteView"
@@ -31,10 +40,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginTop="647dp"
-        android:text="notes" />
+        android:layout_marginTop="24dp"
+        android:text="@string/notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fertilizerView" />
 
     <TextView
         android:id="@+id/petFriendlyView"
@@ -43,21 +53,24 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="305dp"
-        android:layout_marginLeft="305dp"
-        android:layout_marginBottom="183dp"
-        android:text="pet Friendly" />
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:text="@string/pet_friendly"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sunlightView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/scientificNameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/nameView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="160dp"
-        android:text="scientific name" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/scientific_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sunlightView" />
 
     <TextView
         android:id="@+id/sunlightView"
@@ -66,10 +79,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="51dp"
-        android:layout_marginRight="51dp"
-        android:layout_marginBottom="141dp"
-        android:text="sunlight" />
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/sunlight"
+        app:layout_constraintEnd_toStartOf="@+id/petFriendlyView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterAmountView" />
 
     <TextView
         android:id="@+id/typeView"
@@ -79,10 +97,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginBottom="184dp"
-        android:text="type" />
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/type"
+        app:layout_constraintEnd_toStartOf="@+id/nameView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view" />
 
     <TextView
         android:id="@+id/waterAmountView"
@@ -91,9 +114,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="165dp"
-        android:layout_marginBottom="142dp"
-        android:text="water amount" />
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/water_amount"
+        app:layout_constraintEnd_toStartOf="@+id/waterFrequencyView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeView" />
 
     <TextView
         android:id="@+id/waterFrequencyView"
@@ -102,10 +131,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="144dp"
-        android:text="water frequency" />
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:text="@string/water_frequency"
+        app:layout_constraintBaseline_toBaselineOf="@+id/waterAmountView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnload"
@@ -114,10 +144,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="601dp"
-        android:text="Show " />
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/show"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plantSpinner" />
 
     <Button
         android:id="@+id/btnSave"
@@ -126,17 +158,20 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="81dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:text="Save" />
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/save"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnload"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
         android:id="@+id/plantSpinner"
         android:layout_width="match_parent"
         android:layout_height="24dp"
-        android:layout_marginTop="32dp" />
-
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image_view"
@@ -144,6 +179,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="335dp" />
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnload" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
