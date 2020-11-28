@@ -22,6 +22,7 @@ public class UserPlant extends BasePlant implements Serializable {
       this.nickname = nickname;
 
     }
+    public UserPlant(){}
 
     public String getLastWatered() {
         return lastWatered;

@@ -34,6 +34,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         mChildListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.d("ON CHILD ADDED", "ADDED ******** ADDED ");
                 UserPlant up = dataSnapshot.getValue(UserPlant.class);
                 Log.d("Name", up.getName());
                 up.setId(dataSnapshot.getKey());
@@ -71,6 +72,8 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 //        LayoutInflater mInflater = LayoutInflater.from(mContext);
 //        view = mInflater.inflate(R.layout.cardview_item_plant,parent,false);
 //        return new UserPlantViewHolder(view);
+
+        Log.d("ON MY PLANT CREATE", "***************");
         Context context = parent.getContext();
         View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.rv_row, parent, false);
