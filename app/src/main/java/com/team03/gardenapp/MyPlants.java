@@ -12,8 +12,10 @@ public class MyPlants extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_user_plants);
-        //this will need to change to get the current user info from the shared preferences
+
+        //todo this will need to change to get the current user info from the shared preferences instead of hard coding the "2"
         FirebaseUtil.getUserPlants("2");
+
         RecyclerView rvUserPlants = (RecyclerView) findViewById(R.id.rvUserPlants);
         final UserPlantAdapter adapter = new UserPlantAdapter();
         rvUserPlants.setAdapter(adapter);
