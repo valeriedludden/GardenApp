@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -112,6 +113,8 @@ public class AddUserPlant extends AppCompatActivity {
                     final String type=dataSnapshot.child("type").getValue().toString();
                     final String waterAmount=dataSnapshot.child("waterAmount").getValue().toString();
                     final String waterFrequency=dataSnapshot.child("waterFrequency").getValue().toString();
+                    final String userID = FirebaseAuth.getInstance().getUid();
+
 
                     if (dataSnapshot.child("petFriendly").getValue() != null) {
                         String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
@@ -151,8 +154,7 @@ public class AddUserPlant extends AppCompatActivity {
 
                             FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
                             DatabaseReference databasePushReference = databasePush.getReference();
-                            //Note: the .child(username) refrerences a variable that should be the users database ID. For now, it is hard coded as "2"
-                            databasePushReference.child("Users").child(username).child("plants").child(name).setValue(basePlant);
+                            databasePushReference.child("Users").child(userID).child("plants").child(name).setValue(basePlant);
                         }
                     });
                 }
