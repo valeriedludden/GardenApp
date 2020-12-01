@@ -38,6 +38,8 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
 
+    final DatabaseReference[] image = new DatabaseReference[1];
+
 
     public UserPlantAdapter() {
         final String user = FirebaseAuth.getInstance().getUid(); //gets the user's information
@@ -45,10 +47,15 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
         this.userPlants = FirebaseUtil.mUserPlants;
+
+
         Log.d("U PLANT ADAPTER", "CONSTRUCT LINE 37");
         mChildListener = new ChildEventListener() {
+
+
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
                 UserPlant up = dataSnapshot.getValue(UserPlant.class);
                 up.setId(dataSnapshot.getKey());
                 userPlants.add(up);
@@ -126,7 +133,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         public void bind(UserPlant plant) throws MalformedURLException {
             tvName.setText(plant.getName());
             tvSunlight.setText(plant.getSunlight());
-            tvLastWatered.setText(plant.getLastWatered());
+            tvLastWatered.setText(String.valueOf(plant.getLastWatered()));
             if (plant.getIsPetFriendly() == true) {
                 tvPetFriendly.setText("true");
             } else {

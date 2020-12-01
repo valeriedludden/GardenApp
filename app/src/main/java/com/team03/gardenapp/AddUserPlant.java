@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firebase.ui.auth.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,13 +33,17 @@ public class AddUserPlant extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final TextView mFertilizer,mName,mNotes,mPetFriendly, mPicture, mScientificName, mSunlight, mType,mWaterAmount, mwWaterFrequency;
+        final TextView mFertilizer,mName,mNotes,mPetFriendly, mScientificName, mSunlight, mType,mWaterAmount, mwWaterFrequency;
         Button btn;
+        //final String pictureUrl;
         final Button btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
         final BasePlant basePlant = new BasePlant();
+        final UserPlant userPlant = new UserPlant();
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_user_plants);
         mFertilizer=(TextView)findViewById(R.id.fertilizerView);
         mName=(TextView)findViewById(R.id.nameView);
@@ -48,6 +54,13 @@ public class AddUserPlant extends AppCompatActivity {
         mType=(TextView)findViewById(R.id.typeView);
         mWaterAmount=(TextView)findViewById(R.id.waterAmountView);
         mwWaterFrequency=(TextView)findViewById(R.id.waterFrequencyView);
+
+        final EditText mNickName = (EditText) findViewById(R.id.nickname);
+        final EditText mLastWatered = (EditText) findViewById(R.id.lastWatered);
+        //final EditText mNextWatered = (EditText) findViewById(R.id.);
+
+
+
         btn=(Button)findViewById(R.id.btnload);
         btnSave=(Button)findViewById(R.id.btnSave);
 
@@ -114,7 +127,7 @@ public class AddUserPlant extends AppCompatActivity {
                     final String waterAmount=dataSnapshot.child("waterAmount").getValue().toString();
                     final String waterFrequency=dataSnapshot.child("waterFrequency").getValue().toString();
                     final String userID = FirebaseAuth.getInstance().getUid();
-
+                    //final String pictureUrl =dataSnapshot.child("picture").getValue().toString();
 
                     if (dataSnapshot.child("petFriendly").getValue() != null) {
                         String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
@@ -124,7 +137,7 @@ public class AddUserPlant extends AppCompatActivity {
                         mPetFriendly.setText(petFriendly);
                     }
 
-                    String imageUrl=dataSnapshot.child("picture").getValue().toString();
+                    final String imageUrl=dataSnapshot.child("picture").getValue().toString();
                     ImageView imageView = findViewById(R.id.image_view);
                     Picasso.get().load(imageUrl).into(imageView);
 
@@ -138,10 +151,19 @@ public class AddUserPlant extends AppCompatActivity {
                     mWaterAmount.setText(waterAmount);
                     mwWaterFrequency.setText(waterFrequency);
 
+
+
+
+
                     //This code adds takes the data from the currently viewed plant and adds it to the users database.
                     btnSave.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+                            final String nickName = mNickName.getText().toString();
+                            final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
+                            final String nextWatered ="0000";
+
                             basePlant.setFertilizer(fertilizer);
                             basePlant.setName(name);
                             basePlant.setNotes(notes);
@@ -151,10 +173,20 @@ public class AddUserPlant extends AppCompatActivity {
                             basePlant.setType(type);
                             basePlant.setWaterAmount(waterAmount);
                             basePlant.setWaterFrequency(waterFrequency);
+                            basePlant.setPicture(imageUrl);
+
+                            System.out.println(imageUrl);
+
+
+                            basePlant.setNickname(nickName);
+                            basePlant.setLastWatered(lastWatered);
+                            basePlant.setNextWatered(nextWatered);
 
                             FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
                             DatabaseReference databasePushReference = databasePush.getReference();
                             databasePushReference.child("Users").child(userID).child("plants").child(name).setValue(basePlant);
+
+                            //databasePushReference.child("Users").child(userID).child("plants").child(name).child("userInputs").setValue(userPlant);
                         }
                     });
                 }

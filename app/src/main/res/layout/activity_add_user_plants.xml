@@ -194,7 +194,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/fertilizerView" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -206,17 +206,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/noteView" />
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/lastWatered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="@string/date_plant_watered"
-                android:inputType="date"
+                android:inputType="number"
                 android:maxLength="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@+id/nickname" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
