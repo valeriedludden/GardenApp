@@ -2,10 +2,15 @@ package com.team03.gardenapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +21,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder> {
@@ -28,12 +40,12 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 
 
     public UserPlantAdapter() {
-        final String user = FirebaseAuth.getInstance().getUid();
-        //String user = "2";
-        FirebaseUtil.getUserPlants(user);
+        final String user = FirebaseAuth.getInstance().getUid(); //gets the user's information
+        FirebaseUtil.getUserPlants(user); //gets the user's information
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
         this.userPlants = FirebaseUtil.mUserPlants;
+        Log.d("U PLANT ADAPTER", "CONSTRUCT LINE 37");
         mChildListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -69,36 +81,49 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 
     @Override
     public UserPlantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //puts the data into this the rv_row format to display
         Context context = parent.getContext();
         View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.rv_row, parent, false);
-        return new UserPlantViewHolder(itemView);
+        Log.d("U PLANT ADAPTER", "on crete view lind 76");
+        return new UserPlantViewHolder(itemView, context);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserPlantViewHolder holder, final int position) {
         UserPlant plant = userPlants.get(position);
-        holder.bind(plant);
+        try {
+            holder.bind(plant);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
     @Override
-    public int getItemCount(){ return userPlants.size();}
+    public int getItemCount(){
+        Log.d("U PLANT SIZE", String.valueOf(userPlants.size()));
+        return userPlants.size();
+    }
 
     public class UserPlantViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
+        //matches the data with the specific UI id's
         TextView tvName;
         TextView tvSunlight;
         TextView tvLastWatered;
         TextView tvPetFriendly;
+        ImageView imagePlant;
+        Context context;
 
-        public UserPlantViewHolder(View itemView) {
+        public UserPlantViewHolder(View itemView, Context context) {//todo might take out context if not need to picture
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvSunlight = (TextView) itemView.findViewById(R.id.tvSunshine);
             tvLastWatered = (TextView) itemView.findViewById(R.id.tvLastWatered);
             tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
+            imagePlant = itemView.findViewById(R.id.imagePlant);
         }
 
-        public void bind(UserPlant plant) {
+        public void bind(UserPlant plant) throws MalformedURLException {
             tvName.setText(plant.getName());
             tvSunlight.setText(plant.getSunlight());
             tvLastWatered.setText(plant.getLastWatered());
@@ -107,6 +132,15 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             } else {
                 tvPetFriendly.setText("false");
             }
+            Log.d("PLANT PIC", "Line 120" + plant.getPicture());
+//            imagePlant.setImageBitmap(getBitmapFromURL(plant.getPicture()));//todo 1
+
+//            imagePlant.setImageResource(Picasso.get().load(plant.getPicture()).into(imagePlant));
+//            imagePlant.setImageResource(R.drawable.broccoli);
+
+
+
+            Picasso.get().load(plant.getPicture()).into(imagePlant);
         }
 
         @Override
@@ -117,6 +151,25 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             intent.putExtra("User Plant", selectedPlant);
             view.getContext().startActivity(intent);
         }
+
+        //todo 1
+//        public  Bitmap getBitmapFromURL(String src) {
+//            try {
+//                Log.e("src",src);
+//                URL url = new URL(src);
+//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                connection.setDoInput(true);
+//                connection.connect();
+//                InputStream input = connection.getInputStream();
+//                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+//                Log.e("Bitmap","returned");
+//                return myBitmap;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                Log.e("Exception",e.getMessage());
+//                return null;
+//            }
+//        }
     }
 
 }

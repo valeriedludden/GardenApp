@@ -21,7 +21,7 @@
 
 
         <ImageView
-            android:id="@+id/imageDeal"
+            android:id="@+id/imagePlant"
             android:layout_width="match_parent"
             android:layout_height="114dp"
             android:layout_marginStart="@dimen/text_margin_standard"
@@ -29,8 +29,9 @@
             android:contentDescription="@string/image_of_plant"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:layout_constraintTop_toTopOf="parent"/>
+<!--            app:srcCompat="@mipmap/ic_launcher"-->
+<!--            />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
