@@ -9,13 +9,14 @@
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
     card_view:cardBackgroundColor="#E6E6E6"
     card_view:cardCornerRadius="8dp"
     card_view:cardElevation="8dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -24,42 +25,52 @@
         <ImageView
             android:id="@+id/imagePlant"
             android:layout_width="match_parent"
-            android:layout_height="114dp"
-            android:layout_marginStart="@dimen/text_margin_standard"
-            android:layout_marginLeft="@dimen/text_margin_standard"
+            android:layout_height="162dp"
             android:contentDescription="@string/image_of_plant"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-<!--            app:srcCompat="@mipmap/ic_launcher"-->
-<!--            />-->
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--            app:srcCompat="@mipmap/ic_launcher"-->
+        <!--            />-->
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#59000000"
+            android:fontFamily="@font/varela_round"
+            android:gravity="left"
+            android:paddingLeft="16dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/name_of_plant"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/title_large"
+            app:layout_constraintBottom_toBottomOf="@+id/imagePlant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="@dimen/text_margin_standard"
-                android:text="@string/name_of_plant"
-                android:textSize="@dimen/title_large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagePlant">
 
             <TextView
                 android:id="@+id/tvSunshine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="@dimen/text_margin_standard"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/sunshine_needed"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvLastWatered"
@@ -67,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/text_margin_standard"
                 android:layout_marginRight="@dimen/text_margin_standard"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/last_watered"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/text_price"
@@ -79,12 +91,16 @@
                 android:id="@+id/tvIsPetFriendly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/is_pet_friendly"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tvName"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLastWatered" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
 

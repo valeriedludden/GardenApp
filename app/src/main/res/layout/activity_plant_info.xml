@@ -42,6 +42,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/type"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_view" />
@@ -58,6 +59,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/name"
                 app:layout_constraintBaseline_toBaselineOf="@+id/typeView"
                 app:layout_constraintStart_toEndOf="@+id/typeView" />
@@ -66,16 +68,17 @@
                 android:id="@+id/waterAmountView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/water_amount"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/typeView"
-                android:layout_alignParentStart="true" />
+                app:layout_constraintTop_toBottomOf="@+id/typeView" />
 
             <TextView
                 android:id="@+id/waterFrequencyView"
@@ -86,6 +89,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/water_frequency"
                 app:layout_constraintBaseline_toBaselineOf="@+id/waterAmountView"
                 app:layout_constraintStart_toEndOf="@+id/waterAmountView" />
@@ -113,6 +117,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/pet_friendly"
                 app:layout_constraintBaseline_toBaselineOf="@+id/sunlightView"
                 app:layout_constraintStart_toEndOf="@+id/sunlightView" />
@@ -122,15 +127,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nameView"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/scientific_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sunlightView"
-                android:layout_alignParentStart="true" />
+                app:layout_constraintTop_toBottomOf="@+id/sunlightView" />
 
             <TextView
                 android:id="@+id/fertilizerView"
@@ -139,6 +145,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/fertilizer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scientificNameView" />
@@ -174,6 +181,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/varela_round"
                 android:text="@string/last_date_watered"
                 app:layout_constraintBaseline_toBaselineOf="@+id/noteView"
                 app:layout_constraintEnd_toEndOf="parent"
