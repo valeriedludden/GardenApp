@@ -17,8 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.505"
-        app:srcCompat="@mipmap/background_leaves_foreground"
-        tools:srcCompat="@mipmap/background_leaves_foreground" />
+        app:srcCompat="@drawable/leaves"
+        tools:srcCompat="@drawable/leaves" />
 
     <Button
         android:id="@+id/btnSendToLogin2"
@@ -26,7 +26,7 @@
         android:layout_height="49dp"
         android:layout_marginTop="50dp"
         android:onClick="toRegister"
-        android:text="Register"
+        android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,16 +38,16 @@
         android:layout_width="280dp"
         android:layout_height="30dp"
         android:layout_marginTop="252dp"
+        android:autofillHints=""
         android:background="@color/cardview_light_background"
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextFields"
-        android:autofillHints="" />
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/editTextPassword"

@@ -16,12 +16,15 @@ public class BasePlant implements Serializable {
 //    private ArrayList<Varieties> todo make varieties class and add to constructor and add getters/setters
     private String waterAmount;
     private String waterFrequency;
+    private int lastWatered;
+    private String nextWatered;
+    private String nickname;
 
     public BasePlant(){}
 
     public BasePlant(String id, String name,  String fertilizer, String notes, boolean petFriendly,
                      String picture, String scientificName, String sunlight, String type,
-                     String waterAmount, String waterFrequency) {
+                     String waterAmount, String waterFrequency, int lastWatered, String nextWatered, String nickname) {
         this.name = name;
         this.id = id;
         this.fertilizer = fertilizer;
@@ -33,8 +36,33 @@ public class BasePlant implements Serializable {
         this.type = type;
         this.waterAmount = waterAmount;
         this.waterFrequency = waterFrequency;
+        this.lastWatered = lastWatered;
+        this.nextWatered = nextWatered;
+        this.nickname = nickname;
+    }
+    public int getLastWatered() {
+        return lastWatered;
     }
 
+    public void setLastWatered(int lastWatered) {
+        this.lastWatered = lastWatered;
+    }
+
+    public String getNextWatered() {
+        return nextWatered;
+    }
+
+    public void setNextWatered(String nextWatered) {
+        this.nextWatered = nextWatered;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
     public String getName() {
         return name;
     }

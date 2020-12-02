@@ -42,4 +42,9 @@
     <string name="image_of_plant" />
     <string name="user_info">User Info</string>
     <string name="table_with_plants_and_watering_spout">Table with plants and watering spout</string>
+    <string name="last_date_plant_watered">Last Date Plant Watered</string>
+    <string name="last_date_watered">Last Date Watered</string>
+    <string name="plant_nick_name">Plant Nick Name</string>
+    <string name="date_plant_watered">Date Plant Watered</string>
+    <string name="register">Register</string>
 </resources>
