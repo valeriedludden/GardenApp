@@ -52,7 +52,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                 UserPlant up = dataSnapshot.getValue(UserPlant.class);
                 up.setId(dataSnapshot.getKey());
                 userPlants.add(up);
-                notifyItemInserted(userPlants.size()-1);
+                notifyItemInserted(userPlants.size() - 1);
             }
 
             @Override
@@ -98,8 +98,9 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             e.printStackTrace();
         }
     }
+
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         Log.d("U PLANT SIZE", String.valueOf(userPlants.size()));
         return userPlants.size();
     }
@@ -138,7 +139,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 //            imagePlant.setImageResource(R.drawable.broccoli);
 
 
-
             Picasso.get().load(plant.getPicture()).into(imagePlant);
         }
 
@@ -151,6 +151,5 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             view.getContext().startActivity(intent);
         }
 
-
-
+    }
 }
