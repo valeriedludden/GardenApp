@@ -26,8 +26,8 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/add_icon"
-        app:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:src="@drawable/white_add_icon"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

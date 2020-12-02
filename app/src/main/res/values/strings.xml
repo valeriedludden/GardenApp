@@ -46,4 +46,5 @@
     <string name="last_date_watered">Last Date Watered</string>
     <string name="plant_nick_name">Plant Nick Name</string>
     <string name="date_plant_watered">Date Plant Watered</string>
+    <string name="register">Register</string>
 </resources>
