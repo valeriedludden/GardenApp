@@ -133,7 +133,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                 tvPetFriendly.setText("false");
             }
             Log.d("PLANT PIC", "Line 120" + plant.getPicture());
-//            imagePlant.setImageBitmap(getBitmapFromURL(plant.getPicture()));//todo 1
 
 //            imagePlant.setImageResource(Picasso.get().load(plant.getPicture()).into(imagePlant));
 //            imagePlant.setImageResource(R.drawable.broccoli);
@@ -152,24 +151,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             view.getContext().startActivity(intent);
         }
 
-        //todo 1
-//        public  Bitmap getBitmapFromURL(String src) {
-//            try {
-//                Log.e("src",src);
-//                URL url = new URL(src);
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.setDoInput(true);
-//                connection.connect();
-//                InputStream input = connection.getInputStream();
-//                Bitmap myBitmap = BitmapFactory.decodeStream(input);
-//                Log.e("Bitmap","returned");
-//                return myBitmap;
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Log.e("Exception",e.getMessage());
-//                return null;
-//            }
-//        }
-    }
+
 
 }
