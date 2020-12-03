@@ -1,6 +1,10 @@
 package com.team03.gardenapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -60,6 +64,7 @@ public class  AddUserPlant extends AppCompatActivity {
         final EditText mLastWatered = (EditText) findViewById(R.id.lastWatered);
 
         btnSave=(Button)findViewById(R.id.btnSave);
+
 
 
         //THIS IS THE SPINNER
@@ -190,5 +195,13 @@ public class  AddUserPlant extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
+    }
+
+    //Create the save button at the top of AddPlants page
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.save_menu, menu);
+        return true;
     }
 }

@@ -13,6 +13,7 @@
         android:label="Garden App"
         android:theme="@style/AppTheme">
         <activity
+            android:label="@string/plant_info"
             android:name=".PlantInfo"
             android:parentActivityName=".BottomNavigation">
             <meta-data

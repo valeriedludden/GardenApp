@@ -35,24 +35,24 @@ public class MainActivityScreen extends AppCompatActivity {
 
 
         //Logic for bottom navigation bar
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        Intent intent = new Intent(bottomNavigationView.getContext(), BottomNavigation.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navigation_plants:
-                        Intent intent2 = new Intent(bottomNavigationView.getContext(), MyPlants.class);
-                        startActivity(intent2);
-                        return true;
-                }
-                return true;
-            }
-
-        });
+//        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.navigation_home:
+//                        Intent intent = new Intent(bottomNavigationView.getContext(), BottomNavigation.class);
+//                        startActivity(intent);
+//                        return true;
+//                    case R.id.navigation_plants:
+//                        Intent intent2 = new Intent(bottomNavigationView.getContext(), MyPlants.class);
+//                        startActivity(intent2);
+//                        return true;
+//                }
+//                return true;
+//            }
+//
+//        });
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -96,7 +96,7 @@ public class MainActivityScreen extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.bottom_navigation_menu, menu);
         return true;
     }
 

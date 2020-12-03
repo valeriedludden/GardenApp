@@ -107,6 +107,12 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvLastWatered = (TextView) itemView.findViewById(R.id.tvLastWatered);
             tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
             imagePlant = itemView.findViewById(R.id.imagePlant);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //item clicked
+                }
+            });
         }
 
         public void bind(UserPlant plant) {

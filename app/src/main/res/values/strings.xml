@@ -40,7 +40,6 @@
     <string name="is_pet_friendly">Is Pet Friendly</string>
     <string name="todo">Image of Plant</string>
     <string name="image_of_plant" />
-    <string name="user_info">User Info</string>
     <string name="table_with_plants_and_watering_spout">Table with plants and watering spout</string>
     <string name="last_date_plant_watered">Last Date Plant Watered</string>
     <string name="last_date_watered">Last Date Watered</string>
@@ -59,4 +58,7 @@
     <string name="notes_placeholder">Notes:</string>
     <string name="what_do_you_want_to_call_your_plant">What do you want to call your plant?</string>
     <string name="when_was_the_last_time_you_watered_this_plant">When was the last time you watered this plant?</string>
+    <string name="plant_info">Plant Info</string>
+    <string name="user_info">User Info</string>
+    <string name="signout">Signout</string>
 </resources>
