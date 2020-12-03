@@ -7,10 +7,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:sharedUserId="android.uid.system"
         android:supportsRtl="true"
+        android:label="Garden App"
         android:theme="@style/AppTheme">
         <activity
             android:name=".PlantInfo"
@@ -19,9 +19,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".BottomNavigation" />
         </activity>
-        <activity android:name=".GetUserInfo" />
+        <activity android:name=".GetUserInfo"
+            android:label="User Information"/>
         <activity
             android:name=".MyPlants"
+            android:label="My Plants"
             android:parentActivityName=".BottomNavigation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -35,10 +37,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogIn" />
+        <activity android:name=".LogIn"
+            android:label="Register"/>
+
         <activity android:name=".MainActivityScreen" />
         <activity
             android:name=".AddUserPlant"
+            android:label="Add Plant"
             android:parentActivityName=".BottomNavigation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

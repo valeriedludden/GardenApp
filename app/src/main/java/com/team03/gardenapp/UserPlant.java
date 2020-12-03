@@ -20,7 +20,6 @@ public class UserPlant extends BasePlant implements Serializable {
       this.lastWatered = lastWatered;
       this.nextWatered = nextWatered;
       this.nickname = nickname;
-
     }
     public UserPlant(){}
 

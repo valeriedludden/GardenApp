@@ -2,10 +2,6 @@ package com.team03.gardenapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -22,13 +17,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder> {
@@ -47,9 +35,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         mFirebaseDatabase = FirebaseUtil.mFirebaseDatabase;
         mDatabaseReference = FirebaseUtil.mDatabaseReference;
         this.userPlants = FirebaseUtil.mUserPlants;
-
-
-        Log.d("U PLANT ADAPTER", "CONSTRUCT LINE 37");
         mChildListener = new ChildEventListener() {
 
 
@@ -59,7 +44,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                 UserPlant up = dataSnapshot.getValue(UserPlant.class);
                 up.setId(dataSnapshot.getKey());
                 userPlants.add(up);
-                notifyItemInserted(userPlants.size()-1);
+                notifyItemInserted(userPlants.size() - 1);
             }
 
             @Override
@@ -92,22 +77,17 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         Context context = parent.getContext();
         View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.rv_row, parent, false);
-        Log.d("U PLANT ADAPTER", "on crete view lind 76");
-        return new UserPlantViewHolder(itemView, context);
+        return new UserPlantViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserPlantViewHolder holder, final int position) {
         UserPlant plant = userPlants.get(position);
-        try {
             holder.bind(plant);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
     }
+
     @Override
-    public int getItemCount(){
-        Log.d("U PLANT SIZE", String.valueOf(userPlants.size()));
+    public int getItemCount() {
         return userPlants.size();
     }
 
@@ -119,9 +99,8 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         TextView tvLastWatered;
         TextView tvPetFriendly;
         ImageView imagePlant;
-        Context context;
 
-        public UserPlantViewHolder(View itemView, Context context) {//todo might take out context if not need to picture
+        public UserPlantViewHolder(View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvSunlight = (TextView) itemView.findViewById(R.id.tvSunshine);
@@ -130,7 +109,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             imagePlant = itemView.findViewById(R.id.imagePlant);
         }
 
-        public void bind(UserPlant plant) throws MalformedURLException {
+        public void bind(UserPlant plant) {
             tvName.setText(plant.getName());
             tvSunlight.setText(plant.getSunlight());
             tvLastWatered.setText(String.valueOf(plant.getLastWatered()));
@@ -139,14 +118,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             } else {
                 tvPetFriendly.setText("false");
             }
-            Log.d("PLANT PIC", "Line 120" + plant.getPicture());
-//            imagePlant.setImageBitmap(getBitmapFromURL(plant.getPicture()));//todo 1
-
-//            imagePlant.setImageResource(Picasso.get().load(plant.getPicture()).into(imagePlant));
-//            imagePlant.setImageResource(R.drawable.broccoli);
-
-
-
             Picasso.get().load(plant.getPicture()).into(imagePlant);
         }
 
@@ -159,24 +130,5 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             view.getContext().startActivity(intent);
         }
 
-        //todo 1
-//        public  Bitmap getBitmapFromURL(String src) {
-//            try {
-//                Log.e("src",src);
-//                URL url = new URL(src);
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.setDoInput(true);
-//                connection.connect();
-//                InputStream input = connection.getInputStream();
-//                Bitmap myBitmap = BitmapFactory.decodeStream(input);
-//                Log.e("Bitmap","returned");
-//                return myBitmap;
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Log.e("Exception",e.getMessage());
-//                return null;
-//            }
-//        }
     }
-
 }
