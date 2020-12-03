@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.User;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +42,7 @@ public class  AddUserPlant extends AppCompatActivity {
         final TextView mFertilizer,mName,mNotes,mPetFriendly, mScientificName, mSunlight, mType,mWaterAmount, mwWaterFrequency;
         Button btn;
         //final String pictureUrl;
-        final Button btnSave;
+        final FloatingActionButton btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
         final BasePlant basePlant = new BasePlant();
@@ -63,7 +64,7 @@ public class  AddUserPlant extends AppCompatActivity {
         final EditText mNickName = (EditText) findViewById(R.id.nickname);
         final EditText mLastWatered = (EditText) findViewById(R.id.lastWatered);
 
-        btnSave=(Button)findViewById(R.id.btnSave);
+        btnSave=(FloatingActionButton)findViewById(R.id.btnSave);
 
 
 
