@@ -27,6 +27,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class AddUserPlant extends AppCompatActivity {
 
@@ -163,9 +164,13 @@ public class AddUserPlant extends AppCompatActivity {
                                         basePlant.setLastWatered(lastWatered);
                                         basePlant.setNextWatered(nextWatered);
 
+                                        Random random = new Random();
+                                        int counter = random.nextInt(32768);
+
                                         FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
                                         DatabaseReference databasePushReference = databasePush.getReference();
-                                        databasePushReference.child("Users").child(userID).child("plants").child(name).setValue(basePlant);
+                                        databasePushReference.child("Users").child(userID).child("plants").child(name+counter).setValue(basePlant);
+                                        Toast.makeText(AddUserPlant.this, "Plant has been added to your collection!", Toast.LENGTH_SHORT).show();
 
                                         mNickName.setText("nickname");
                                         mLastWatered.setText("1234");
