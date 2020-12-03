@@ -19,7 +19,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".BottomNavigation" />
         </activity>
-        <activity android:name=".GetUserInfo" />
+        <activity android:name=".GetUserInfo"
+            android:label="User Information"/>
         <activity
             android:name=".MyPlants"
             android:label="My Plants"
