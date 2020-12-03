@@ -57,14 +57,9 @@ public class AddUserPlant extends AppCompatActivity {
 
         final EditText mNickName = (EditText) findViewById(R.id.nickname);
         final EditText mLastWatered = (EditText) findViewById(R.id.lastWatered);
-        //final EditText mNextWatered = (EditText) findViewById(R.id.);
 
-
-
-        btn=(Button)findViewById(R.id.btnload);
         btnSave=(Button)findViewById(R.id.btnSave);
 
-        final String username = "2";
 
         //THIS IS THE SPINNER
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -96,104 +91,99 @@ public class AddUserPlant extends AppCompatActivity {
 
                         //pass the string data into the variable for use in other tasks
                         userInput[0] = Text;
+
+                        //print out the variable to confirm that it has been properly selected.
+                        System.out.println(userInput[0]);
+                        //call the database and pass in the userInput to pull the correct entry.
+                        reff[0] = FirebaseDatabase.getInstance().getReference().child("BasePlants").child("plants").child(userInput[0]);
+                        reff[0].addValueEventListener(new ValueEventListener() {
+
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Toast.makeText(AddUserPlant.this, "Plant data loaded successfully", Toast.LENGTH_SHORT).show();
+                                //populate the fields on the screen with some data from the database.
+                                final String fertilizer=dataSnapshot.child("fertilizer").getValue().toString();
+                                final String name=dataSnapshot.child("name").getValue().toString();
+                                final String notes=dataSnapshot.child("notes").getValue().toString();
+                                //String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
+                                final String scientificName=dataSnapshot.child("scientificName").getValue().toString();
+                                final String sunlight=dataSnapshot.child("sunlight").getValue().toString();
+                                final String type=dataSnapshot.child("type").getValue().toString();
+                                final String waterAmount=dataSnapshot.child("waterAmount").getValue().toString();
+                                final String waterFrequency=dataSnapshot.child("waterFrequency").getValue().toString();
+                                final String userID = FirebaseAuth.getInstance().getUid();
+                                //final String pictureUrl =dataSnapshot.child("picture").getValue().toString();
+
+                                if (dataSnapshot.child("petFriendly").getValue() != null) {
+                                    String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
+                                    mPetFriendly.setText(petFriendly);
+                                } else {
+                                    String petFriendly = "No Data";
+                                    mPetFriendly.setText(petFriendly);
+                                }
+
+                                final String imageUrl=dataSnapshot.child("picture").getValue().toString();
+                                ImageView imageView = findViewById(R.id.image_view);
+                                Picasso.get().load(imageUrl).into(imageView);
+
+                                mFertilizer.setText(fertilizer);
+                                mName.setText(name);
+                                mNotes.setText(notes);
+                                mScientificName.setText(scientificName);
+                                mSunlight.setText(sunlight);
+                                mType.setText(type);
+                                mWaterAmount.setText(waterAmount);
+                                mwWaterFrequency.setText(waterFrequency);
+                                mNickName.setText("nickname");
+                                mLastWatered.setText("1234");
+
+                                //This code adds takes the data from the currently viewed plant and adds it to the users database.
+                                btnSave.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                        final String nickName = mNickName.getText().toString();
+                                        final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
+                                        final String nextWatered ="0000";
+
+                                        basePlant.setFertilizer(fertilizer);
+                                        basePlant.setName(name);
+                                        basePlant.setNotes(notes);
+                                        //basePlant.setPetFriendly(petFriendly);
+                                        basePlant.setScientificName(scientificName);
+                                        basePlant.setSunlight(sunlight);
+                                        basePlant.setType(type);
+                                        basePlant.setWaterAmount(waterAmount);
+                                        basePlant.setWaterFrequency(waterFrequency);
+                                        basePlant.setPicture(imageUrl);
+
+                                        System.out.println(imageUrl);
+
+
+                                        basePlant.setNickname(nickName);
+                                        basePlant.setLastWatered(lastWatered);
+                                        basePlant.setNextWatered(nextWatered);
+
+                                        FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
+                                        DatabaseReference databasePushReference = databasePush.getReference();
+                                        databasePushReference.child("Users").child(userID).child("plants").child(name).setValue(basePlant);
+
+                                        mNickName.setText("nickname");
+                                        mLastWatered.setText("1234");
+                                    }
+                                });
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {}
+                        });
                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> parentView) {}
                 });
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-            //print out the variable to confirm that it has been properly selected.
-            System.out.println(userInput[0]);
-            //call the database and pass in the userInput to pull the correct entry.
-            reff[0] = FirebaseDatabase.getInstance().getReference().child("BasePlants").child("plants").child(userInput[0]);
-            reff[0].addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Toast.makeText(AddUserPlant.this, "Plant data loaded successfully", Toast.LENGTH_SHORT).show();
-                    //populate the fields on the screen with some data from the database.
-                    final String fertilizer=dataSnapshot.child("fertilizer").getValue().toString();
-                    final String name=dataSnapshot.child("name").getValue().toString();
-                    final String notes=dataSnapshot.child("notes").getValue().toString();
-                    //String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
-                    final String scientificName=dataSnapshot.child("scientificName").getValue().toString();
-                    final String sunlight=dataSnapshot.child("sunlight").getValue().toString();
-                    final String type=dataSnapshot.child("type").getValue().toString();
-                    final String waterAmount=dataSnapshot.child("waterAmount").getValue().toString();
-                    final String waterFrequency=dataSnapshot.child("waterFrequency").getValue().toString();
-                    final String userID = FirebaseAuth.getInstance().getUid();
-                    //final String pictureUrl =dataSnapshot.child("picture").getValue().toString();
-
-                    if (dataSnapshot.child("petFriendly").getValue() != null) {
-                        String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
-                        mPetFriendly.setText(petFriendly);
-                    } else {
-                       String petFriendly = "No Data";
-                        mPetFriendly.setText(petFriendly);
-                    }
-
-                    final String imageUrl=dataSnapshot.child("picture").getValue().toString();
-                    ImageView imageView = findViewById(R.id.image_view);
-                    Picasso.get().load(imageUrl).into(imageView);
-
-                    mFertilizer.setText(fertilizer);
-                    mName.setText(name);
-                    mNotes.setText(notes);
-                    //mPetFriendly.setText(petFriendly);
-                    mScientificName.setText(scientificName);
-                    mSunlight.setText(sunlight);
-                    mType.setText(type);
-                    mWaterAmount.setText(waterAmount);
-                    mwWaterFrequency.setText(waterFrequency);
-
-
-
-
-
-                    //This code adds takes the data from the currently viewed plant and adds it to the users database.
-                    btnSave.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            final String nickName = mNickName.getText().toString();
-                            final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
-                            final String nextWatered ="0000";
-
-                            basePlant.setFertilizer(fertilizer);
-                            basePlant.setName(name);
-                            basePlant.setNotes(notes);
-                            //basePlant.setPetFriendly(petFriendly);
-                            basePlant.setScientificName(scientificName);
-                            basePlant.setSunlight(sunlight);
-                            basePlant.setType(type);
-                            basePlant.setWaterAmount(waterAmount);
-                            basePlant.setWaterFrequency(waterFrequency);
-                            basePlant.setPicture(imageUrl);
-
-                            System.out.println(imageUrl);
-
-
-                            basePlant.setNickname(nickName);
-                            basePlant.setLastWatered(lastWatered);
-                            basePlant.setNextWatered(nextWatered);
-
-                            FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
-                            DatabaseReference databasePushReference = databasePush.getReference();
-                            databasePushReference.child("Users").child(userID).child("plants").child(name).setValue(basePlant);
-
-                            //databasePushReference.child("Users").child(userID).child("plants").child(name).child("userInputs").setValue(userPlant);
-                        }
-                    });
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {}
-            });
-            }
-        });
     }
 }

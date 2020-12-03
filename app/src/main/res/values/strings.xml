@@ -47,4 +47,16 @@
     <string name="plant_nick_name">Plant Nick Name</string>
     <string name="date_plant_watered">Date Plant Watered</string>
     <string name="register">Register</string>
+
+    <string name="name_placeholder">Name:</string>
+    <string name="scientific_name_placeholder">Scientific Name:</string>
+    <string name="water_amount_placeholder">Water Amount:</string>
+    <string name="water_frequency_placeholder">Water Frequency:</string>
+    <string name="sunlight_placeholder">Sunlight:</string>
+    <string name="fertilizer_placeholder">Fertilizer:</string>
+    <string name="pet_friendly_placeholder">Pet Friendly:</string>
+    <string name="plant_type_placeholder">Plant Type:</string>
+    <string name="notes_placeholder">Notes:</string>
+    <string name="what_do_you_want_to_call_your_plant">What do you want to call your plant?</string>
+    <string name="when_was_the_last_time_you_watered_this_plant">When was the last time you watered this plant?</string>
 </resources>
