@@ -39,7 +39,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogIn"
-            android:label="Register"/>
+            android:label="Register"
+            android:parentActivityName=".LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT.ACTIVITY"
+                android:value=".LoginActivity"/>
+        </activity>
+
 
         <activity android:name=".MainActivityScreen" />
         <activity

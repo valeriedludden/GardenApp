@@ -61,4 +61,6 @@
     <string name="plant_info">Plant Info</string>
     <string name="user_info">User Info</string>
     <string name="signout">Signout</string>
+    <string name="register_name">Name</string>
+    <string name="already_have_an_account">Already Have An Account</string>
 </resources>

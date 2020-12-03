@@ -44,10 +44,12 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
                 android:text="@string/save"
-                app:layout_constraintEnd_toEndOf="@+id/fertilizerView"
-                app:layout_constraintTop_toBottomOf="@+id/noteView" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/waterFrequencyView" />
 
             <ImageView
                 android:id="@+id/image_view"
@@ -69,10 +71,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:text="@string/type"
-                app:layout_constraintEnd_toEndOf="@+id/scientificNameView"
-                app:layout_constraintTop_toBottomOf="@+id/fertilizerView" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView15"
+                app:layout_constraintStart_toEndOf="@+id/textView15" />
 
             <TextView
                 android:id="@+id/nameView"
@@ -86,10 +89,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/name"
-                app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/plantSpinner" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+                app:layout_constraintStart_toEndOf="@+id/textView6" />
 
             <TextView
                 android:id="@+id/waterAmountView"
@@ -101,10 +103,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/water_amount"
-                app:layout_constraintStart_toEndOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/nameView" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
+                app:layout_constraintStart_toEndOf="@+id/textView8" />
 
             <TextView
                 android:id="@+id/waterFrequencyView"
@@ -115,10 +116,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/water_frequency"
-                app:layout_constraintStart_toEndOf="@+id/textView9"
-                app:layout_constraintTop_toBottomOf="@+id/waterAmountView" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
+                app:layout_constraintStart_toEndOf="@+id/textView9" />
 
             <TextView
                 android:id="@+id/sunlightView"
@@ -129,10 +129,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/sunlight"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/waterFrequencyView" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
+                app:layout_constraintStart_toEndOf="@+id/textView11" />
 
             <TextView
                 android:id="@+id/petFriendlyView"
@@ -143,10 +142,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/pet_friendly"
-                app:layout_constraintStart_toEndOf="@+id/textView14"
-                app:layout_constraintTop_toBottomOf="@+id/fertilizerView" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
+                app:layout_constraintStart_toEndOf="@+id/textView14" />
 
             <TextView
                 android:id="@+id/scientificNameView"
@@ -156,64 +154,70 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:text="@string/scientific_name"
-                app:layout_constraintEnd_toEndOf="@+id/btnSave"
-                app:layout_constraintTop_toBottomOf="@+id/plantSpinner" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
+                app:layout_constraintStart_toEndOf="@+id/textView7" />
 
             <TextView
                 android:id="@+id/fertilizerView"
-                android:layout_width="294dp"
-                android:layout_height="32dp"
+                android:layout_width="0dp"
+                android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 android:text="@string/fertilizer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView13"
-                app:layout_constraintTop_toBottomOf="@+id/sunlightView" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
+                app:layout_constraintEnd_toEndOf="@+id/noteView"
+                app:layout_constraintStart_toEndOf="@+id/textView13" />
 
             <TextView
                 android:id="@+id/noteView"
-                android:layout_width="293dp"
+                android:layout_width="0dp"
                 android:layout_height="81dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/notes"
-                app:layout_constraintEnd_toEndOf="@+id/typeView"
-                app:layout_constraintHorizontal_bias="0.48"
-                app:layout_constraintStart_toEndOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/petFriendlyView" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
+                app:layout_constraintEnd_toEndOf="@+id/image_view"
+                app:layout_constraintStart_toEndOf="@+id/textView16" />
 
             <EditText
                 android:id="@+id/nickname"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/plant_nick_name"
                 android:inputType="textPersonName"
-                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
             <EditText
                 android:id="@+id/lastWatered"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
                 android:autofillHints="0000"
                 android:ems="10"
                 android:hint="@string/date_plant_watered"
                 android:inputType="number"
                 android:maxLength="4"
-                app:layout_constraintStart_toStartOf="@+id/textView18"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
             <TextView
@@ -222,10 +226,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/name_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/plantSpinner" />
@@ -234,124 +238,140 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/scientific_name_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/scientificNameView"
-                app:layout_constraintTop_toBottomOf="@+id/plantSpinner" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/water_amount_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/water_frequency_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/sunlight_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/fertilizer_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/pet_friendly_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView13"
-                app:layout_constraintTop_toBottomOf="@+id/fertilizerView" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/plant_type_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/typeView"
-                app:layout_constraintTop_toBottomOf="@+id/fertilizerView" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/notes_placeholder"
                 android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
                 android:layout_marginTop="16dp"
-                android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:text="@string/what_do_you_want_to_call_your_plant"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/noteView" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
                 android:layout_marginTop="16dp"
-                android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:text="@string/when_was_the_last_time_you_watered_this_plant"
-                app:layout_constraintStart_toStartOf="@+id/nickname"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nickname" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
