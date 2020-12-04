@@ -107,10 +107,13 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvLastWatered = (TextView) itemView.findViewById(R.id.tvLastWatered);
             tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
             imagePlant = itemView.findViewById(R.id.imagePlant);
+
+            //Onclick listener for card view
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //item clicked
+                    Intent intent = new Intent(view.getContext(), PlantInfo.class);
+                    view.getContext().startActivity(intent);
                 }
             });
         }

@@ -15,7 +15,7 @@
         <activity
             android:label="@string/plant_info"
             android:name=".PlantInfo"
-            android:parentActivityName=".BottomNavigation">
+            android:parentActivityName=".MyPlants">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".BottomNavigation" />
