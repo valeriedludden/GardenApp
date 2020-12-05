@@ -1,6 +1,10 @@
 package com.team03.gardenapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.User;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,7 +42,7 @@ public class  AddUserPlant extends AppCompatActivity {
         final TextView mFertilizer,mName,mNotes,mPetFriendly, mScientificName, mSunlight, mType,mWaterAmount, mwWaterFrequency;
         Button btn;
         //final String pictureUrl;
-        final Button btnSave;
+        final FloatingActionButton btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
         final BasePlant basePlant = new BasePlant();
@@ -59,7 +64,8 @@ public class  AddUserPlant extends AppCompatActivity {
         final EditText mNickName = (EditText) findViewById(R.id.nickname);
         final EditText mLastWatered = (EditText) findViewById(R.id.lastWatered);
 
-        btnSave=(Button)findViewById(R.id.btnSave);
+        btnSave=(FloatingActionButton)findViewById(R.id.btnSave);
+
 
 
         //THIS IS THE SPINNER
@@ -190,5 +196,13 @@ public class  AddUserPlant extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
+    }
+
+    //Create the save button at the top of AddPlants page
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.save_menu, menu);
+        return true;
     }
 }
