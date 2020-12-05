@@ -119,6 +119,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     Log.d("UPA", selectedPlant.getName()); //todo remove
                     Intent intent = new Intent(view.getContext(), PlantInfo.class);
                     intent.putExtra("Name", selectedPlant.getName());
+                    intent.putExtra("Nickname", selectedPlant.getNickname());
                     intent.putExtra("Sunlight", selectedPlant.getSunlight());
                     intent.putExtra("Last Watered", selectedPlant.getLastWatered());
                     intent.putExtra("Scientific Name", selectedPlant.getScientificName());
@@ -129,6 +130,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     intent.putExtra("Notes", selectedPlant.getNotes());
                     intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
                     Log.d("UPA", "Freq = " + selectedPlant.getWaterFrequency());//todo remove
+                    Log.d("UPA", "Nickname = " + selectedPlant.getNickname());//todo remove
 
                     if(selectedPlant.getIsPetFriendly()){
                         intent.putExtra("Pet Friendly", "True");
