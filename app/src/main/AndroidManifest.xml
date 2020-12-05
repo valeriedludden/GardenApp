@@ -13,7 +13,7 @@
         android:label="Garden App"
         android:theme="@style/AppTheme">
         <activity
-            android:label="@string/plant_info"
+            android:label="Plant Details"
             android:name=".PlantInfo"
             android:parentActivityName=".MyPlants">
             <meta-data

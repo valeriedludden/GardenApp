@@ -1,7 +1,15 @@
 package com.team03.gardenapp;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class FirebaseUtil {
@@ -10,6 +18,7 @@ public class FirebaseUtil {
     private static FirebaseUtil firebaseUtil;
     public static ArrayList<BasePlant> mBasePlants;
     public static ArrayList<UserPlant> mUserPlants;
+    public static Task<Void> mSinglePlantReference;
     private String ref;
 
     private FirebaseUtil(){
@@ -36,4 +45,23 @@ public class FirebaseUtil {
         mUserPlants = new ArrayList<UserPlant>();
         mDatabaseReference = mFirebaseDatabase.getReference().child("Users").child(user).child("plants");
     }
+    public static void deleteSinglePlant(String user, String name, String nickname){
+        if(firebaseUtil == null){
+            firebaseUtil = new FirebaseUtil();
+            mFirebaseDatabase = FirebaseDatabase.getInstance();
+        }
+        Query plantQuery = mFirebaseDatabase.getReference().child("Users").child(user).child("plants").child(name).child("nickname").equalTo(nickname);
+        plantQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                snapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }
