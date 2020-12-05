@@ -1,5 +1,6 @@
 package com.team03.gardenapp;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
-public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder> {
+public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder>  {
 
     private List<UserPlant> userPlants;
     private FirebaseDatabase mFirebaseDatabase;
@@ -99,20 +102,40 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         TextView tvLastWatered;
         TextView tvPetFriendly;
         ImageView imagePlant;
+        public View view;
 
         public UserPlantViewHolder(View itemView) {
             super(itemView);
+            view = itemView;
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvSunlight = (TextView) itemView.findViewById(R.id.tvSunshine);
             tvLastWatered = (TextView) itemView.findViewById(R.id.tvLastWatered);
             tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
             imagePlant = itemView.findViewById(R.id.imagePlant);
-
-            //Onclick listener for card view
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    UserPlant selectedPlant = userPlants.get(position);
+                    Log.d("UPA", selectedPlant.getName()); //todo remove
                     Intent intent = new Intent(view.getContext(), PlantInfo.class);
+                    intent.putExtra("Name", selectedPlant.getName());
+                    intent.putExtra("Sunlight", selectedPlant.getSunlight());
+                    intent.putExtra("Last Watered", selectedPlant.getLastWatered());
+                    intent.putExtra("Scientific Name", selectedPlant.getScientificName());
+                    intent.putExtra("Water Amount", selectedPlant.getWaterAmount());
+                    intent.putExtra("Plant Type", selectedPlant.getType());
+                    intent.putExtra("Fertilizer", selectedPlant.getFertilizer());
+                    intent.putExtra("Type", selectedPlant.getType());
+                    intent.putExtra("Notes", selectedPlant.getNotes());
+                    intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
+                    Log.d("UPA", "Freq = " + selectedPlant.getWaterFrequency());//todo remove
+
+                    if(selectedPlant.getIsPetFriendly()){
+                        intent.putExtra("Pet Friendly", "True");
+                    }
+                    else{
+                        intent.putExtra("Pet Friendly", "False");
+                    }
                     view.getContext().startActivity(intent);
                 }
             });
@@ -123,9 +146,9 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvSunlight.setText(plant.getSunlight());
             tvLastWatered.setText(String.valueOf(plant.getLastWatered()));
             if (plant.getIsPetFriendly() == true) {
-                tvPetFriendly.setText("true");
+                tvPetFriendly.setText("True");
             } else {
-                tvPetFriendly.setText("false");
+                tvPetFriendly.setText("False");
             }
             Picasso.get().load(plant.getPicture()).into(imagePlant);
         }
