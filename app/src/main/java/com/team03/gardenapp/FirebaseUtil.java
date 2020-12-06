@@ -25,7 +25,7 @@ public class FirebaseUtil {
         this.ref = "BasePlants";
     }
 
-    // Not in use yet
+    // Not in use yet todo remove before we turn Project in if not used
     public void openFbReference(){
         if(firebaseUtil == null){
             firebaseUtil = new FirebaseUtil();
@@ -45,12 +45,9 @@ public class FirebaseUtil {
         mUserPlants = new ArrayList<UserPlant>();
         mDatabaseReference = mFirebaseDatabase.getReference().child("Users").child(user).child("plants");
     }
-    public static void deleteSinglePlant(String user, String name, String nickname){
-        if(firebaseUtil == null){
-            firebaseUtil = new FirebaseUtil();
-            mFirebaseDatabase = FirebaseDatabase.getInstance();
-        }
-        Query plantQuery = mFirebaseDatabase.getReference().child("Users").child(user).child("plants").child(name).child("nickname").equalTo(nickname);
+    public static void deleteSinglePlant(String user, String plantId){
+        //mFirebase is already set from getting the user's plants
+        Query plantQuery = mFirebaseDatabase.getReference().child("Users").child(user).child("plants").child(plantId);
         plantQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
