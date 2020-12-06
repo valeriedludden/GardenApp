@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -20,9 +21,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
-public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder>  {
+public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder> {
 
     private List<UserPlant> userPlants;
     private FirebaseDatabase mFirebaseDatabase;
@@ -86,7 +88,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
     @Override
     public void onBindViewHolder(@NonNull UserPlantViewHolder holder, final int position) {
         UserPlant plant = userPlants.get(position);
-            holder.bind(plant);
+        holder.bind(plant);
     }
 
     @Override
@@ -113,11 +115,13 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
             imagePlant = itemView.findViewById(R.id.imagePlant);
             view.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
                     int position = getAdapterPosition();
                     UserPlant selectedPlant = userPlants.get(position);
-                    Log.d("UPA", selectedPlant.getName()); //todo remove
+
                     Intent intent = new Intent(view.getContext(), PlantInfo.class);
+                    intent.putExtra("ID", selectedPlant.getId());
                     intent.putExtra("Name", selectedPlant.getName());
                     intent.putExtra("Nickname", selectedPlant.getNickname());
                     intent.putExtra("Sunlight", selectedPlant.getSunlight());
@@ -130,12 +134,11 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     intent.putExtra("Notes", selectedPlant.getNotes());
                     intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
                     Log.d("UPA", "Freq = " + selectedPlant.getWaterFrequency());//todo remove
-                    Log.d("UPA", "Nickname = " + selectedPlant.getNickname());//todo remove
+                    Log.d("UPA", "ID = " + selectedPlant.getId());//todo remove
 
-                    if(selectedPlant.getIsPetFriendly()){
+                    if (selectedPlant.getIsPetFriendly()) {
                         intent.putExtra("Pet Friendly", "True");
-                    }
-                    else{
+                    } else {
                         intent.putExtra("Pet Friendly", "False");
                     }
                     view.getContext().startActivity(intent);

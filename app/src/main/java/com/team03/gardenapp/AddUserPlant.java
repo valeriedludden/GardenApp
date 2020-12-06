@@ -2,6 +2,7 @@ package com.team03.gardenapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,15 +32,18 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
-public class  AddUserPlant extends AppCompatActivity {
+public class AddUserPlant extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final TextView mFertilizer,mName,mNotes,mPetFriendly, mScientificName, mSunlight, mType,mWaterAmount, mwWaterFrequency;
+        final TextView mFertilizer, mName, mNotes, mPetFriendly, mScientificName, mSunlight, mType, mWaterAmount, mwWaterFrequency;
         Button btn;
         //final String pictureUrl;
         final FloatingActionButton btnSave;
@@ -51,21 +55,20 @@ public class  AddUserPlant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_user_plants);
-        mFertilizer=(TextView)findViewById(R.id.fertilizerView);
-        mName=(TextView)findViewById(R.id.nameView);
-        mNotes=(TextView)findViewById(R.id.noteView);
-        mPetFriendly=(TextView)findViewById(R.id.petFriendlyView);
-        mScientificName=(TextView)findViewById(R.id.scientificNameView);
-        mSunlight=(TextView)findViewById(R.id.sunlightView);
-        mType=(TextView)findViewById(R.id.typeView);
-        mWaterAmount=(TextView)findViewById(R.id.waterAmountView);
-        mwWaterFrequency=(TextView)findViewById(R.id.waterFrequencyView);
+        mFertilizer = (TextView) findViewById(R.id.fertilizerView);
+        mName = (TextView) findViewById(R.id.nameView);
+        mNotes = (TextView) findViewById(R.id.noteView);
+        mPetFriendly = (TextView) findViewById(R.id.petFriendlyView);
+        mScientificName = (TextView) findViewById(R.id.scientificNameView);
+        mSunlight = (TextView) findViewById(R.id.sunlightView);
+        mType = (TextView) findViewById(R.id.typeView);
+        mWaterAmount = (TextView) findViewById(R.id.waterAmountView);
+        mwWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
 
         final EditText mNickName = (EditText) findViewById(R.id.nickname);
         final EditText mLastWatered = (EditText) findViewById(R.id.lastWatered);
 
-        btnSave=(FloatingActionButton)findViewById(R.id.btnSave);
-
+        btnSave = (FloatingActionButton) findViewById(R.id.btnSave);
 
 
         //THIS IS THE SPINNER
@@ -77,9 +80,9 @@ public class  AddUserPlant extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final List<String> plantsList = new ArrayList<String>();
                 //get the plant names from the database snapshot and, if they are not null, add them to the plantlist List.
-                for (DataSnapshot plantsSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot plantsSnapshot : dataSnapshot.getChildren()) {
                     String plantName = plantsSnapshot.child("name").getValue(String.class);
-                    if (plantName!=null){
+                    if (plantName != null) {
                         plantsList.add(plantName);
                     }
                 }
@@ -95,7 +98,6 @@ public class  AddUserPlant extends AppCompatActivity {
 
                         //Get the String data from teh current selection
                         String Text = plantSpinner.getItemAtPosition(plantSpinner.getSelectedItemPosition()).toString();
-
                         //pass the string data into the variable for use in other tasks
                         userInput[0] = Text;
 
@@ -108,27 +110,27 @@ public class  AddUserPlant extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Toast.makeText(AddUserPlant.this, "Plant data loaded successfully", Toast.LENGTH_SHORT).show();
                                 //populate the fields on the screen with some data from the database.
-                                final String fertilizer=dataSnapshot.child("fertilizer").getValue().toString();
-                                final String name=dataSnapshot.child("name").getValue().toString();
-                                final String notes=dataSnapshot.child("notes").getValue().toString();
+                                final String fertilizer = dataSnapshot.child("fertilizer").getValue().toString();
+                                final String name = dataSnapshot.child("name").getValue().toString();
+                                final String notes = dataSnapshot.child("notes").getValue().toString();
                                 //String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
-                                final String scientificName=dataSnapshot.child("scientificName").getValue().toString();
-                                final String sunlight=dataSnapshot.child("sunlight").getValue().toString();
-                                final String type=dataSnapshot.child("type").getValue().toString();
-                                final String waterAmount=dataSnapshot.child("waterAmount").getValue().toString();
-                                final String waterFrequency=dataSnapshot.child("waterFrequency").getValue().toString();
+                                final String scientificName = dataSnapshot.child("scientificName").getValue().toString();
+                                final String sunlight = dataSnapshot.child("sunlight").getValue().toString();
+                                final String type = dataSnapshot.child("type").getValue().toString();
+                                final String waterAmount = dataSnapshot.child("waterAmount").getValue().toString();
+                                final String waterFrequency = dataSnapshot.child("waterFrequency").getValue().toString();
                                 final String userID = FirebaseAuth.getInstance().getUid();
                                 //final String pictureUrl =dataSnapshot.child("picture").getValue().toString();
 
                                 if (dataSnapshot.child("petFriendly").getValue() != null) {
-                                    String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
+                                    String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
                                     mPetFriendly.setText(petFriendly);
                                 } else {
                                     String petFriendly = "No Data";
                                     mPetFriendly.setText(petFriendly);
                                 }
 
-                                final String imageUrl=dataSnapshot.child("picture").getValue().toString();
+                                final String imageUrl = dataSnapshot.child("picture").getValue().toString();
                                 ImageView imageView = findViewById(R.id.image_view);
                                 Picasso.get().load(imageUrl).into(imageView);
 
@@ -150,7 +152,7 @@ public class  AddUserPlant extends AppCompatActivity {
 
                                         final String nickName = mNickName.getText().toString();
                                         final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
-                                        final String nextWatered ="0000";
+                                        final String nextWatered = "0000";
 
                                         basePlant.setFertilizer(fertilizer);
                                         basePlant.setName(name);
@@ -175,7 +177,15 @@ public class  AddUserPlant extends AppCompatActivity {
 
                                         FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
                                         DatabaseReference databasePushReference = databasePush.getReference();
-                                        databasePushReference.child("Users").child(userID).child("plants").child(name+counter).setValue(basePlant);
+
+                                        //creates a unique string to be used as the plant ID.
+                                        String plantId = UUID.randomUUID().toString();
+
+                                        //New coded added by Valerie to add a unique Id for each user plant todo remove this comment
+                                        databasePushReference.child("Users").child(userID).child("plants").child(plantId).setValue(basePlant);
+                                        //Darrin's original code todo remove if we are keeping the plantId
+                                        //databasePushReference.child("Users").child(userID).child("plants").child(name+counter).setValue(basePlant);
+
                                         Toast.makeText(AddUserPlant.this, "Plant has been added to your collection!", Toast.LENGTH_SHORT).show();
 
                                         mNickName.setText("nickname");
@@ -183,17 +193,23 @@ public class  AddUserPlant extends AppCompatActivity {
                                     }
                                 });
                             }
+
                             @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {}
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
                         });
                     }
+
                     @Override
-                    public void onNothingSelected(AdapterView<?> parentView) {}
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                    }
                 });
 
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
 
     }
