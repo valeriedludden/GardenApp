@@ -88,7 +88,7 @@ public class AddUserPlant extends AppCompatActivity {
                 }
                 //make the spinner and pass it into the ArrayAdapter
                 final Spinner plantSpinner = (Spinner) findViewById(R.id.plantSpinner);
-                ArrayAdapter<String> plantAdapter = new ArrayAdapter<String>(AddUserPlant.this, android.R.layout.simple_spinner_item, plantsList);
+                ArrayAdapter<String> plantAdapter = new ArrayAdapter          <String>(AddUserPlant.this, android.R.layout.simple_spinner_item, plantsList);
                 plantAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 plantSpinner.setAdapter(plantAdapter);
 
