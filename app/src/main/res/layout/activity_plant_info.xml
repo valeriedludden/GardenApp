@@ -284,7 +284,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintTop_toBottomOf="@+id/fertilizerView" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -326,7 +326,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nickname" />
+                app:layout_constraintTop_toBottomOf="@+id/nicknameView" />
 
             <TextView
                 android:id="@+id/textView17"
