@@ -1,6 +1,5 @@
 package com.team03.gardenapp;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -9,11 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +17,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder> {
@@ -30,9 +25,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildListener;
-
-    final DatabaseReference[] image = new DatabaseReference[1];
-
 
     public UserPlantAdapter() {
         final String user = FirebaseAuth.getInstance().getUid(); //gets the user's information
@@ -106,14 +98,18 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         ImageView imagePlant;
         public View view;
 
+        //Sets what data goes into the views
         public UserPlantViewHolder(View itemView) {
             super(itemView);
+            //sets the data to be shown on the MyPlants page for each plant
             view = itemView;
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvSunlight = (TextView) itemView.findViewById(R.id.tvSunshine);
             tvLastWatered = (TextView) itemView.findViewById(R.id.tvLastWatered);
             tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
             imagePlant = itemView.findViewById(R.id.imagePlant);
+
+            //sets what information gets sent to the plant info page
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -134,14 +130,15 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     intent.putExtra("Notes", selectedPlant.getNotes());
                     intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
                     intent.putExtra("Plant Image", selectedPlant.getPicture());
+                    intent.putExtra("Pet Friendly", selectedPlant.getIsPetFriendly());
                     Log.d("UPA", "Freq = " + selectedPlant.getWaterFrequency());//todo remove
                     Log.d("UPA", "ID = " + selectedPlant.getId());//todo remove
-
-                    if (selectedPlant.getIsPetFriendly()) {
-                        intent.putExtra("Pet Friendly", "Yes");
-                    } else {
-                        intent.putExtra("Pet Friendly", "No");
-                    }
+//todo probably remove this section since we turned pet friendly to a string.
+//                    if (selectedPlant.getIsPetFriendly()) {
+//                        intent.putExtra("Pet Friendly", "Yes");
+//                    } else {
+//                        intent.putExtra("Pet Friendly", "No");
+//                    }
                     view.getContext().startActivity(intent);
                 }
             });
@@ -151,16 +148,19 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvName.setText(plant.getName());
             tvSunlight.setText(plant.getSunlight());
             tvLastWatered.setText(String.valueOf(plant.getLastWatered()));
-            if (plant.getIsPetFriendly() == true) {
-                tvPetFriendly.setText("True");
-            } else {
-                tvPetFriendly.setText("False");
-            }
+            tvPetFriendly.setText(String.valueOf(plant.getIsPetFriendly()));
+//            if (plant.getIsPetFriendly() == true) {
+//                tvPetFriendly.setText("True");
+//            } else {
+//                tvPetFriendly.setText("False");
+//            } todo remove above if statement if keeping pet friendly as a string
+            //converts the image from a string url to an image
             Picasso.get().load(plant.getPicture()).into(imagePlant);
         }
 
         @Override
         public void onClick(View view) {
+            //When plant card view is clicked, it selects the plant and opens the Plant Info page.
             int position = getAdapterPosition();
             UserPlant selectedPlant = userPlants.get(position);
             Intent intent = new Intent(view.getContext(), UserPlantActivity.class);

@@ -1,68 +1,23 @@
 package com.team03.gardenapp;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class BasePlant implements Serializable {
     private String id;
     private String name;
     private String fertilizer;
     private String notes;
-    private boolean petFriendly;
+    private String petFriendly;
     private String picture;
     private String scientificName;
     private String sunlight;
     private String type;
-//    private ArrayList<Varieties> todo make varieties class and add to constructor and add getters/setters
     private String waterAmount;
     private String waterFrequency;
-    private int lastWatered;
-    private String nextWatered;
-    private String nickname;
+
 
     public BasePlant(){}
 
-    public BasePlant(String id, String name,  String fertilizer, String notes, boolean petFriendly,
-                     String picture, String scientificName, String sunlight, String type,
-                     String waterAmount, String waterFrequency, int lastWatered, String nextWatered, String nickname) {
-        this.name = name;
-        this.id = id;
-        this.fertilizer = fertilizer;
-        this.notes = notes;
-        this. petFriendly = petFriendly;
-        this.picture = picture;
-        this.scientificName = scientificName;
-        this.sunlight = sunlight;
-        this.type = type;
-        this.waterAmount = waterAmount;
-        this.waterFrequency = waterFrequency;
-        this.lastWatered = lastWatered;
-        this.nextWatered = nextWatered;
-        this.nickname = nickname;
-    }
-    public int getLastWatered() {
-        return lastWatered;
-    }
-
-    public void setLastWatered(int lastWatered) {
-        this.lastWatered = lastWatered;
-    }
-
-    public String getNextWatered() {
-        return nextWatered;
-    }
-
-    public void setNextWatered(String nextWatered) {
-        this.nextWatered = nextWatered;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
     public String getName() {
         return name;
     }
@@ -127,11 +82,11 @@ public class BasePlant implements Serializable {
         this.notes = notes;
     }
 
-    public boolean getIsPetFriendly() {
+    public String getIsPetFriendly() {
         return petFriendly;
     }
 
-    public void setPetFriendly(boolean petFriendly) {
+    public void setPetFriendly(String petFriendly) {
         this.petFriendly = petFriendly;
     }
 
