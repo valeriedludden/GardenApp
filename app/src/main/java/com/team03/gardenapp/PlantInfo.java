@@ -18,7 +18,7 @@ public class PlantInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info);
 
-        final TextView mFertilizer, mName, mNotes, mPetFriendly, mScientificName, mSunlight, mType, mWaterAmount, mWaterFrequency, mLastWatered;
+        final TextView mFertilizer, mName, mNotes, mPetFriendly, mScientificName, mSunlight, mType, mWaterAmount, mWaterFrequency, mLastWatered, mNickname;
         final FloatingActionButton btnDelete = (FloatingActionButton) findViewById(R.id.btnDelete);
         final String user = FirebaseAuth.getInstance().getUid(); //gets the user's information
 
@@ -47,6 +47,7 @@ public class PlantInfo extends AppCompatActivity {
         mWaterAmount = (TextView) findViewById(R.id.waterAmountView);
         mWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
         mLastWatered = (TextView) findViewById(R.id.waterFrequencyView);
+        mNickname = (TextView) findViewById(R.id.nicknameView);
 
         mName.setText(Name);
         mSunlight.setText(Sunlight);
@@ -58,6 +59,7 @@ public class PlantInfo extends AppCompatActivity {
         mWaterAmount.setText(WaterAmount);
         mWaterFrequency.setText(WaterFrequency);
         mLastWatered.setText(LastWatered);
+        mNickname.setText(Nickname);
         Log.d("PLANT INFO", WaterFrequency);//todo remove
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
