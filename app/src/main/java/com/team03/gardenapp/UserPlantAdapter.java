@@ -133,13 +133,14 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     intent.putExtra("Type", selectedPlant.getType());
                     intent.putExtra("Notes", selectedPlant.getNotes());
                     intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
+                    intent.putExtra("Plant Image", selectedPlant.getPicture());
                     Log.d("UPA", "Freq = " + selectedPlant.getWaterFrequency());//todo remove
                     Log.d("UPA", "ID = " + selectedPlant.getId());//todo remove
 
                     if (selectedPlant.getIsPetFriendly()) {
-                        intent.putExtra("Pet Friendly", "True");
+                        intent.putExtra("Pet Friendly", "Yes");
                     } else {
-                        intent.putExtra("Pet Friendly", "False");
+                        intent.putExtra("Pet Friendly", "No");
                     }
                     view.getContext().startActivity(intent);
                 }
