@@ -1,11 +1,9 @@
 package com.team03.gardenapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,8 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.firebase.ui.auth.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,13 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -45,7 +36,6 @@ public class AddUserPlant extends AppCompatActivity {
 
         final TextView mFertilizer, mName, mNotes, mPetFriendly, mScientificName, mSunlight, mType, mWaterAmount, mwWaterFrequency;
         Button btn;
-        //final String pictureUrl;
         final FloatingActionButton btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
@@ -113,26 +103,30 @@ public class AddUserPlant extends AppCompatActivity {
                                 final String fertilizer = dataSnapshot.child("fertilizer").getValue().toString();
                                 final String name = dataSnapshot.child("name").getValue().toString();
                                 final String notes = dataSnapshot.child("notes").getValue().toString();
-                                //String petFriendly=dataSnapshot.child("petFriendly").getValue().toString();
                                 final String scientificName = dataSnapshot.child("scientificName").getValue().toString();
                                 final String sunlight = dataSnapshot.child("sunlight").getValue().toString();
                                 final String type = dataSnapshot.child("type").getValue().toString();
                                 final String waterAmount = dataSnapshot.child("waterAmount").getValue().toString();
                                 final String waterFrequency = dataSnapshot.child("waterFrequency").getValue().toString();
                                 final String userID = FirebaseAuth.getInstance().getUid();
-                                //final String pictureUrl =dataSnapshot.child("picture").getValue().toString();
 
-                                if (dataSnapshot.child("petFriendly").getValue() != null) {
-                                    String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
+                                //todo we can remove this section if we make sure that each plant has pet info (will need to set petFriedly above then)
+                                if(dataSnapshot.child("petFriendly").getValue() != null){
+                                     final String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
                                     mPetFriendly.setText(petFriendly);
-                                } else {
-                                    String petFriendly = "No Data";
+                                    userPlant.setPetFriendly(petFriendly);
+
+                                }
+                                else {
+                                    final String petFriendly = "No Data Available";
                                     mPetFriendly.setText(petFriendly);
+                                    userPlant.setPetFriendly(petFriendly);
                                 }
 
                                 final String imageUrl = dataSnapshot.child("picture").getValue().toString();
                                 ImageView imageView = findViewById(R.id.image_view);
                                 Picasso.get().load(imageUrl).into(imageView);
+
 
                                 mFertilizer.setText(fertilizer);
                                 mName.setText(name);
@@ -145,6 +139,7 @@ public class AddUserPlant extends AppCompatActivity {
                                 mNickName.setText("nickname");
                                 mLastWatered.setText("1234");
 
+
                                 //This code adds takes the data from the currently viewed plant and adds it to the users database.
                                 btnSave.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -154,23 +149,20 @@ public class AddUserPlant extends AppCompatActivity {
                                         final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
                                         final String nextWatered = "0000";
 
-                                        basePlant.setFertilizer(fertilizer);
-                                        basePlant.setName(name);
-                                        basePlant.setNotes(notes);
-                                        //basePlant.setPetFriendly(petFriendly);
-                                        basePlant.setScientificName(scientificName);
-                                        basePlant.setSunlight(sunlight);
-                                        basePlant.setType(type);
-                                        basePlant.setWaterAmount(waterAmount);
-                                        basePlant.setWaterFrequency(waterFrequency);
-                                        basePlant.setPicture(imageUrl);
+                                        userPlant.setFertilizer(fertilizer);
+                                        userPlant.setName(name);
+                                        userPlant.setNotes(notes);
+                                        userPlant.setScientificName(scientificName);
+                                        userPlant.setSunlight(sunlight);
+                                        userPlant.setType(type);
+                                        userPlant.setWaterAmount(waterAmount);
+                                        userPlant.setWaterFrequency(waterFrequency);
+                                        userPlant.setPicture(imageUrl);
+                                        userPlant.setNickname(nickName);
+                                        userPlant.setLastWatered(lastWatered);
+                                        userPlant.setNextWatered(nextWatered);
 
                                         System.out.println(imageUrl);
-
-
-                                        basePlant.setNickname(nickName);
-                                        basePlant.setLastWatered(lastWatered);
-                                        basePlant.setNextWatered(nextWatered);
 
                                         Random random = new Random();
                                         int counter = random.nextInt(32768);
@@ -182,7 +174,7 @@ public class AddUserPlant extends AppCompatActivity {
                                         String plantId = UUID.randomUUID().toString();
 
                                         //New coded added by Valerie to add a unique Id for each user plant todo remove this comment
-                                        databasePushReference.child("Users").child(userID).child("plants").child(plantId).setValue(basePlant);
+                                        databasePushReference.child("Users").child(userID).child("plants").child(plantId).setValue(userPlant);
                                         //Darrin's original code todo remove if we are keeping the plantId
                                         //databasePushReference.child("Users").child(userID).child("plants").child(name+counter).setValue(basePlant);
 
@@ -222,3 +214,4 @@ public class AddUserPlant extends AppCompatActivity {
         return true;
     }
 }
+
