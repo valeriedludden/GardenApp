@@ -21,20 +21,6 @@
         app:srcCompat="@drawable/leaves"
         tools:srcCompat="@drawable/leaves" />
 
-    <Button
-        android:id="@+id/btnSendToLogin2"
-        android:layout_width="294dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorPrimary"
-        android:onClick="toRegister"
-        android:text="@string/register"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
     <EditText
         android:id="@+id/editTextEmail"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
@@ -80,5 +66,19 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <Button
+        android:id="@+id/btnSendToLogin2"
+        android:layout_width="294dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorPrimary"
+        android:onClick="toRegister"
+        android:text="@string/register"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
