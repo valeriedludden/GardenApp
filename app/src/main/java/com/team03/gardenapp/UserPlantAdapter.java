@@ -133,7 +133,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     intent.putExtra("Type", selectedPlant.getType());
                     intent.putExtra("Notes", selectedPlant.getNotes());
                     intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
-                    intent.putExtra("Picture", selectedPlant.getPicture());
+                    intent.putExtra("Plant Image", selectedPlant.getPicture());
                     Log.d("UPA", "Freq = " + selectedPlant.getWaterFrequency());//todo remove
                     Log.d("UPA", "ID = " + selectedPlant.getId());//todo remove
 
