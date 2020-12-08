@@ -19,6 +19,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
+/**
+ * <p> {@link #UserPlantAdapter()} This adapter holds all of the logic that is used to update the card views with info from the database
+ */
+
 public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder> {
 
     private List<UserPlant> userPlants;
@@ -67,6 +71,13 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         mDatabaseReference.addChildEventListener(mChildListener);
 
     }
+
+    /**
+     * Creates the UI using the card view
+     * @param parent
+     * @param viewType
+     * @return a new instance of the UserPlantViewHolder class
+     */
 
     @Override
     public UserPlantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

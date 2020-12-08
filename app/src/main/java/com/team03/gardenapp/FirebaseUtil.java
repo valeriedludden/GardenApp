@@ -12,6 +12,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * Logic for the database
+ *
+ * <p> {@link #FirebaseUtil()} Builds the arrays for the base plant and user plant
+ * <p> {@link #getUserPlants(String)} Get the information of the user and store it in the userplants array
+ * <p> {@link #deleteSinglePlant(String, String)} When a user wants to delete a plant this logic is used
+ */
+
 public class FirebaseUtil {
     public static FirebaseDatabase mFirebaseDatabase;
     public static DatabaseReference mDatabaseReference;
@@ -45,6 +53,12 @@ public class FirebaseUtil {
         mUserPlants = new ArrayList<UserPlant>();
         mDatabaseReference = mFirebaseDatabase.getReference().child("Users").child(user).child("plants");
     }
+
+    /**
+     * <p> {@link #deleteSinglePlant(String, String)} Used for when a user wants to delete a single a plant from their account
+     * @param user
+     * @param plantId
+     */
     public static void deleteSinglePlant(String user, String plantId){
         //mFirebase is already set from getting the user's plants
         Query plantQuery = mFirebaseDatabase.getReference().child("Users").child(user).child("plants").child(plantId);
