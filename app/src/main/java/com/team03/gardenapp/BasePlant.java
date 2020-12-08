@@ -1,6 +1,14 @@
 package com.team03.gardenapp;
 
+import android.view.View;
+
 import java.io.Serializable;
+
+/**
+ * Stores the plant information from the database in the app
+ *
+ * {@link #BasePlant()}} ()} Stores the data from the database
+ */
 
 public class BasePlant implements Serializable {
     private String id;

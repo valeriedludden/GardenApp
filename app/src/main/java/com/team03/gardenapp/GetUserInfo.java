@@ -14,7 +14,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class GetUserInfo extends AppCompatActivity {
-    
+
+    /**
+     * This class is used to get the users information
+     *
+     * <p> {@link #onCreate(Bundle)} Creates the UI and instantiates he initialized variables
+     * <p> {@link #getUserInfo()} Pulls in all of the information of a user to be used
+     */
+
     //Initialize needed variables
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -43,7 +50,7 @@ public class GetUserInfo extends AppCompatActivity {
 
 
     /**
-     * This the Method to get the user info
+     * <p> {@link #getUserInfo()} This Method is used to get the user info
      */
     private void getUserInfo(){
 

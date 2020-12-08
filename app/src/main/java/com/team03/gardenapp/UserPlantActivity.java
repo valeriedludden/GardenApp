@@ -13,6 +13,11 @@ public class UserPlantActivity extends AppCompatActivity {
     private TextView tvLastWatered;
     private TextView tvPetFriendly;
 
+    /**
+     * <p> {@link #onCreate(Bundle)} Used to create the UI for the users plant page
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
