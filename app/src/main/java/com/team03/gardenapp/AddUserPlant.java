@@ -132,19 +132,11 @@ public class AddUserPlant extends AppCompatActivity {
                                 final String waterAmount = dataSnapshot.child("waterAmount").getValue().toString();
                                 final String waterFrequency = dataSnapshot.child("waterFrequency").getValue().toString();
                                 final String userID = FirebaseAuth.getInstance().getUid();
+                                final String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
+                                Log.d("ADD PLANT", "PET FRIENDLY = " + petFriendly);
 
                                 //todo we can remove this section if we make sure that each plant has pet info (will need to set petFriedly above then)
-                                if(dataSnapshot.child("petFriendly").getValue() != null){
-                                     final String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
-                                    mPetFriendly.setText(petFriendly);
-                                    userPlant.setPetFriendly(petFriendly);
 
-                                }
-                                else {
-                                    final String petFriendly = "No Data Available";
-                                    mPetFriendly.setText(petFriendly);
-                                    userPlant.setPetFriendly(petFriendly);
-                                }
 
                                 final String imageUrl = dataSnapshot.child("picture").getValue().toString();
                                 ImageView imageView = findViewById(R.id.image_view);
@@ -161,6 +153,7 @@ public class AddUserPlant extends AppCompatActivity {
                                 mwWaterFrequency.setText(waterFrequency);
                                 mNickName.setText("nickname");
                                 mLastWatered.setText("1234");
+                                mPetFriendly.setText(petFriendly);
 
 
                                 //This code adds takes the data from the currently viewed plant and adds it to the users database.
@@ -179,6 +172,7 @@ public class AddUserPlant extends AppCompatActivity {
 
                                         userPlant.setFertilizer(fertilizer);
                                         userPlant.setName(name);
+                                        userPlant.setIsPetFriendly(petFriendly);
                                         userPlant.setNotes(notes);
                                         userPlant.setScientificName(scientificName);
                                         userPlant.setSunlight(sunlight);
@@ -189,6 +183,7 @@ public class AddUserPlant extends AppCompatActivity {
                                         userPlant.setNickname(nickName);
                                         userPlant.setLastWatered(lastWatered);
                                         userPlant.setNextWatered(nextWatered);
+
 
                                         System.out.println(imageUrl);
 
