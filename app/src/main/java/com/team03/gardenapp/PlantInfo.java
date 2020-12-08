@@ -15,6 +15,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
+/**
+ * Pull in data from Firebase and display to the use when the card is clicked
+ *
+ * <p>Use {@link #onCreate(Bundle)} (View)} ()} to assign values and display to user
+ */
+
 public class PlantInfo extends AppCompatActivity {
 
     final DatabaseReference[] image = new DatabaseReference[1];
@@ -43,8 +49,8 @@ public class PlantInfo extends AppCompatActivity {
         String ScientificName = intent.getExtras().getString("Scientific Name");
         String Type = intent.getExtras().getString("Type");
         String WaterAmount = intent.getExtras().getString("Water Amount");
-        String WaterFrequency = intent.getExtras().getString("Water Frequency");
         String plantImage = intent.getExtras().getString("Plant Image");
+        String WaterFrequency = intent.getExtras().getString("Water Frequency");
 
         mFertilizer = (TextView) findViewById(R.id.fertilizerView);
         mName = (TextView) findViewById(R.id.nameView);
@@ -54,10 +60,10 @@ public class PlantInfo extends AppCompatActivity {
         mSunlight = (TextView) findViewById(R.id.sunlightView);
         mType = (TextView) findViewById(R.id.typeView);
         mWaterAmount = (TextView) findViewById(R.id.waterAmountView);
-        mWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
-        mLastWatered = (TextView) findViewById(R.id.waterFrequencyView);
+        mLastWatered = (TextView) findViewById(R.id.lastWatered);
         mNickname = (TextView) findViewById(R.id.nicknameView);
         mPlantImage = (ImageView) findViewById(R.id.image_view);
+        mWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
 
         mName.setText(Name);
         mSunlight.setText(Sunlight);

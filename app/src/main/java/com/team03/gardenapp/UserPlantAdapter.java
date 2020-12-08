@@ -19,6 +19,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
+/**
+ * <p> {@link #UserPlantAdapter()} This adapter holds all of the logic that is used to update the card views with info from the database
+ */
+
 public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.UserPlantViewHolder> {
 
     private List<UserPlant> userPlants;
@@ -68,6 +72,13 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 
     }
 
+    /**
+     * Creates the UI using the card view
+     * @param parent
+     * @param viewType
+     * @return a new instance of the UserPlantViewHolder class
+     */
+
     @Override
     public UserPlantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //puts the data into this the rv_row format to display
@@ -96,6 +107,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         TextView tvLastWatered;
         TextView tvPetFriendly;
         ImageView imagePlant;
+        ImageView ivPetIcon;
         public View view;
 
         //Sets what data goes into the views
@@ -107,7 +119,8 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvSunlight = (TextView) itemView.findViewById(R.id.tvSunshine);
             tvLastWatered = (TextView) itemView.findViewById(R.id.tvLastWatered);
             tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
-            imagePlant = itemView.findViewById(R.id.imagePlant);
+            imagePlant = (ImageView) itemView.findViewById(R.id.imagePlant);
+            ivPetIcon = (ImageView) itemView.findViewById(R.id.petIcon);
 
             //sets what information gets sent to the plant info page
             view.setOnClickListener(new View.OnClickListener() {
@@ -128,17 +141,10 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     intent.putExtra("Fertilizer", selectedPlant.getFertilizer());
                     intent.putExtra("Type", selectedPlant.getType());
                     intent.putExtra("Notes", selectedPlant.getNotes());
-                    intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
                     intent.putExtra("Plant Image", selectedPlant.getPicture());
                     intent.putExtra("Pet Friendly", selectedPlant.getIsPetFriendly());
-                    Log.d("UPA", "Freq = " + selectedPlant.getWaterFrequency());//todo remove
-                    Log.d("UPA", "ID = " + selectedPlant.getId());//todo remove
-//todo probably remove this section since we turned pet friendly to a string.
-//                    if (selectedPlant.getIsPetFriendly()) {
-//                        intent.putExtra("Pet Friendly", "Yes");
-//                    } else {
-//                        intent.putExtra("Pet Friendly", "No");
-//                    }
+                    intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
+
                     view.getContext().startActivity(intent);
                 }
             });
@@ -148,12 +154,14 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvName.setText(plant.getName());
             tvSunlight.setText(plant.getSunlight());
             tvLastWatered.setText(String.valueOf(plant.getLastWatered()));
-            tvPetFriendly.setText(String.valueOf(plant.getIsPetFriendly()));
-//            if (plant.getIsPetFriendly() == true) {
-//                tvPetFriendly.setText("True");
-//            } else {
-//                tvPetFriendly.setText("False");
-//            } todo remove above if statement if keeping pet friendly as a string
+            tvPetFriendly.setText(plant.getIsPetFriendly());
+
+            if(plant.getIsPetFriendly().equalsIgnoreCase("Yes")){
+                ivPetIcon.setImageResource(R.drawable.paw);
+            }
+            else{
+                ivPetIcon.setImageResource(R.drawable.no_paw);
+            }
             //converts the image from a string url to an image
             Picasso.get().load(plant.getPicture()).into(imagePlant);
         }
@@ -163,9 +171,9 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             //When plant card view is clicked, it selects the plant and opens the Plant Info page.
             int position = getAdapterPosition();
             UserPlant selectedPlant = userPlants.get(position);
-            Intent intent = new Intent(view.getContext(), UserPlantActivity.class);
-            intent.putExtra("User Plant", selectedPlant);
-            view.getContext().startActivity(intent);
+//            Intent intent = new Intent(view.getContext(), UserPlantActivity.class);
+//            intent.putExtra("User Plant", selectedPlant);
+//            view.getContext().startActivity(intent);
         }
 
     }

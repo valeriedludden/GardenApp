@@ -22,6 +22,15 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivityScreen extends AppCompatActivity {
 
+    /**
+     * UI for the main app page
+     *
+     * <p> {@link #onCreate(Bundle)} Creates the UI elements for the home screen
+     * <p> {@link #toLogin(View)} Gets the login information from the database
+     * <p> {@link #onCreateOptionsMenu(Menu)} Creates the UI for the navigation overflow menu
+     * <p> {@link #onOptionsItemSelected(MenuItem)} When an option is selected in the overflow menu a new activity is created
+     */
+
     private Button user_info;
     private Button mButtonSignOut;
     private FirebaseAuth mAuth;
@@ -32,28 +41,6 @@ public class MainActivityScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
-
-
-        //Logic for bottom navigation bar
-//        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.navigation_home:
-//                        Intent intent = new Intent(bottomNavigationView.getContext(), BottomNavigation.class);
-//                        startActivity(intent);
-//                        return true;
-//                    case R.id.navigation_plants:
-//                        Intent intent2 = new Intent(bottomNavigationView.getContext(), MyPlants.class);
-//                        startActivity(intent2);
-//                        return true;
-//                }
-//                return true;
-//            }
-//
-//        });
-
 
         mAuth = FirebaseAuth.getInstance();
         mButtonSignOut = (Button) findViewById(R.id.btnSignout);
@@ -92,6 +79,11 @@ public class MainActivityScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * <p> {@link #onCreateOptionsMenu(Menu)} used to the create the overflow menu
+     * @param menu
+     * @return true
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,6 +91,10 @@ public class MainActivityScreen extends AppCompatActivity {
         inflater.inflate(R.menu.bottom_navigation_menu, menu);
         return true;
     }
+
+    /**
+     * <p> {@link #onOptionsItemSelected(MenuItem)} Menu activity, on click of menu activity it takes you to the respective screen
+     */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
