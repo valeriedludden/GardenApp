@@ -24,7 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -137,7 +140,7 @@ public class AddUserPlant extends AppCompatActivity {
                                 mWaterAmount.setText(waterAmount);
                                 mwWaterFrequency.setText(waterFrequency);
                                 mNickName.setText("nickname");
-                                mLastWatered.setText("1234");
+                                //mLastWatered.setText("1234");
 
 
                                 //This code adds takes the data from the currently viewed plant and adds it to the users database.
@@ -146,8 +149,8 @@ public class AddUserPlant extends AppCompatActivity {
                                     public void onClick(View v) {
 
                                         final String nickName = mNickName.getText().toString();
-                                        final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
-                                        final String nextWatered = "0000";
+                                        //final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
+                                        final String nextWatered = mLastWatered.getText().toString();
 
                                         userPlant.setFertilizer(fertilizer);
                                         userPlant.setName(name);
@@ -159,7 +162,7 @@ public class AddUserPlant extends AppCompatActivity {
                                         userPlant.setWaterFrequency(waterFrequency);
                                         userPlant.setPicture(imageUrl);
                                         userPlant.setNickname(nickName);
-                                        userPlant.setLastWatered(lastWatered);
+                                        userPlant.setLastWatered(todayIs());
                                         userPlant.setNextWatered(nextWatered);
 
                                         System.out.println(imageUrl);
@@ -181,7 +184,7 @@ public class AddUserPlant extends AppCompatActivity {
                                         Toast.makeText(AddUserPlant.this, "Plant has been added to your collection!", Toast.LENGTH_SHORT).show();
 
                                         mNickName.setText("nickname");
-                                        mLastWatered.setText("1234");
+                                        //mLastWatered.setText("1234");
                                     }
                                 });
                             }
@@ -204,6 +207,13 @@ public class AddUserPlant extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String todayIs(){
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());;
+
+        return currentDate;
     }
 
     //Create the save button at the top of AddPlants page

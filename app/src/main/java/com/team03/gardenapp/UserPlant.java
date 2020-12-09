@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class UserPlant extends BasePlant implements Serializable {
 
-    private int lastWatered;
+    private String lastWatered;
     private String nextWatered;
     private String nickname;
 
     public UserPlant(){}
 
-    public int getLastWatered() {
+    public String getLastWatered() {
         return lastWatered;
     }
 
-    public void setLastWatered(int lastWatered) {
+    public void setLastWatered(String lastWatered) {
         this.lastWatered = lastWatered;
     }
 
