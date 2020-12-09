@@ -21,6 +21,12 @@ import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.util.Calendar;
 
+/**
+ * Pull in data from Firebase and display to the use when the card is clicked
+ *
+ * <p>Use {@link #onCreate(Bundle)} (View)} ()} to assign values and display to user
+ */
+
 public class PlantInfo extends AppCompatActivity {
 
     private FirebaseDatabase mFirebaseDatabase;

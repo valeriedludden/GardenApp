@@ -38,7 +38,12 @@ public class MyPlants extends AppCompatActivity {
             }
         });
     }
-    //Create the overflow menu
+
+    /**
+     * <p> {@link #onCreateOptionsMenu(Menu)} used to the create the overflow menu
+     * @param menu
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -46,7 +51,9 @@ public class MyPlants extends AppCompatActivity {
         return true;
     }
 
-    //Menu activity, on click of menu activity it takes you to the respective screen
+    /**
+     * <p> {@link #onOptionsItemSelected(MenuItem)} Menu activity, on click of menu activity it takes you to the respective screen
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -1,18 +1,26 @@
 package com.team03.gardenapp;
 
+import android.view.View;
+
 import java.io.Serializable;
+
+/**
+ * Stores the plant information from the database in the app
+ *
+ * {@link #BasePlant()}} ()} Stores the data from the database
+ */
 
 public class BasePlant implements Serializable {
     private String id;
     private String name;
     private String fertilizer;
     private String notes;
-    private String petFriendly;
     private String picture;
     private String scientificName;
     private String sunlight;
     private String type;
     private String waterAmount;
+    private String isPetFriendly;
     private String waterFrequency;
 
 
@@ -58,14 +66,6 @@ public class BasePlant implements Serializable {
         this.waterAmount = waterAmount;
     }
 
-    public String getWaterFrequency() {
-        return waterFrequency;
-    }
-
-    public void setWaterFrequency(String waterFrequency) {
-        this.waterFrequency = waterFrequency;
-    }
-
     public String getFertilizer() {
         return fertilizer;
     }
@@ -82,14 +82,6 @@ public class BasePlant implements Serializable {
         this.notes = notes;
     }
 
-    public String getIsPetFriendly() {
-        return petFriendly;
-    }
-
-    public void setPetFriendly(String petFriendly) {
-        this.petFriendly = petFriendly;
-    }
-
     public String getPicture() {
         return picture;
     }
@@ -104,5 +96,21 @@ public class BasePlant implements Serializable {
 
     public void setScientificName(String scientificName) {
         this.scientificName = scientificName;
+    }
+
+    public String getIsPetFriendly() {
+        return isPetFriendly;
+    }
+
+    public void setIsPetFriendly(String isPetFriendly) {
+        this.isPetFriendly = isPetFriendly;
+    }
+
+    public String getWaterFrequency() {
+        return waterFrequency;
+    }
+
+    public void setWaterFrequency(String waterFrequency) {
+        this.waterFrequency = waterFrequency;
     }
 }

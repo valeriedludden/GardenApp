@@ -34,6 +34,16 @@ import java.util.UUID;
 
 public class AddUserPlant extends AppCompatActivity {
 
+    /**
+     *
+     * Pulls in the data from firebase and when an item from the spinner is selected the
+     * info will update
+     *
+     * <p> {@link #onCreate(Bundle)} (View)} ()} creates the UI and updates the values from the database
+     * <p> {@link #onCreateOptionsMenu(Menu)} (View)} ()} Creates the top menu to save a plant to the users account
+     *
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -69,6 +79,11 @@ public class AddUserPlant extends AppCompatActivity {
         DatabaseReference fDatabaseRoot = database.getReference();
 
         fDatabaseRoot.child("BasePlants").child("plants").addListenerForSingleValueEvent(new ValueEventListener() {
+
+            /**
+             * <p> {@link #onDataChange(DataSnapshot)} get the plant names from the database snapshot and, if they are not null, add them to the plantlist List
+             * @param dataSnapshot
+             */
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final List<String> plantsList = new ArrayList<String>();
@@ -86,6 +101,14 @@ public class AddUserPlant extends AppCompatActivity {
                 plantSpinner.setAdapter(plantAdapter);
 
                 plantSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                    /**
+                     * When a menu item is selected the method updates the Ui with the values from the database
+                     * @param parentView
+                     * @param selectedItemView
+                     * @param position
+                     * @param id
+                     */
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
@@ -112,19 +135,11 @@ public class AddUserPlant extends AppCompatActivity {
                                 final String waterAmount = dataSnapshot.child("waterAmount").getValue().toString();
                                 final String waterFrequency = dataSnapshot.child("waterFrequency").getValue().toString();
                                 final String userID = FirebaseAuth.getInstance().getUid();
+                                final String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
+                                Log.d("ADD PLANT", "PET FRIENDLY = " + petFriendly);
 
                                 //todo we can remove this section if we make sure that each plant has pet info (will need to set petFriedly above then)
-                                if(dataSnapshot.child("petFriendly").getValue() != null){
-                                     final String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
-                                    mPetFriendly.setText(petFriendly);
-                                    userPlant.setPetFriendly(petFriendly);
 
-                                }
-                                else {
-                                    final String petFriendly = "No Data Available";
-                                    mPetFriendly.setText(petFriendly);
-                                    userPlant.setPetFriendly(petFriendly);
-                                }
 
                                 final String imageUrl = dataSnapshot.child("picture").getValue().toString();
                                 ImageView imageView = findViewById(R.id.image_view);
@@ -141,10 +156,16 @@ public class AddUserPlant extends AppCompatActivity {
                                 mwWaterFrequency.setText(waterFrequency);
                                 mNickName.setText("nickname");
                                 //mLastWatered.setText("1234");
+                                mPetFriendly.setText(petFriendly);
 
 
                                 //This code adds takes the data from the currently viewed plant and adds it to the users database.
                                 btnSave.setOnClickListener(new View.OnClickListener() {
+
+                                    /**
+                                     * Method used to save a plant to the users account
+                                     * @param v
+                                     */
                                     @Override
                                     public void onClick(View v) {
 
@@ -154,6 +175,7 @@ public class AddUserPlant extends AppCompatActivity {
 
                                         userPlant.setFertilizer(fertilizer);
                                         userPlant.setName(name);
+                                        userPlant.setIsPetFriendly(petFriendly);
                                         userPlant.setNotes(notes);
                                         userPlant.setScientificName(scientificName);
                                         userPlant.setSunlight(sunlight);
@@ -164,6 +186,7 @@ public class AddUserPlant extends AppCompatActivity {
                                         userPlant.setNickname(nickName);
                                         userPlant.setLastWatered(todayIs());
                                         userPlant.setNextWatered(nextWatered);
+
 
                                         System.out.println(imageUrl);
 
@@ -215,6 +238,13 @@ public class AddUserPlant extends AppCompatActivity {
 
         return currentDate;
     }
+
+    /**
+     * <p> {@link #onCreateOptionsMenu(Menu)} used to the create the overflow menu
+     * @param menu
+     * @return true
+     */
+
 
     //Create the save button at the top of AddPlants page
     @Override
