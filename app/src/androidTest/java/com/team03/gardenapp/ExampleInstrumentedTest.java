@@ -28,13 +28,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void practiceTest() {
 
-//        BasePlant plant = new BasePlant("Daisy", id, lastWatered, sunlight, type, waterAmount, waterFrequency);
-
-//        assertEquals(plant.getName(), "Daisy");
-//        assertEquals(plant.getName(), "Dais");
-
-        assertEquals(4, (2 + 2));
-//        assertEquals(4, (3 + 2));
 
     }
 }

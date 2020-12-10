@@ -79,9 +79,9 @@ public class PlantInfo extends AppCompatActivity {
         mSunlight = (TextView) findViewById(R.id.sunlightView);
         mType = (TextView) findViewById(R.id.typeView);
         mWaterAmount = (TextView) findViewById(R.id.waterAmountView);
-        //mWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
+        mWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
         mLastWatered = (TextView) findViewById(R.id.lastWateredInfo);
-        mNextWatered = (TextView) findViewById(R.id.waterFrequencyView);
+        mNextWatered = (TextView) findViewById(R.id.nextWateredView);
         mNickname = (TextView) findViewById(R.id.nicknameView);
         mPlantImage = (ImageView) findViewById(R.id.image_view);
 
@@ -93,12 +93,11 @@ public class PlantInfo extends AppCompatActivity {
         mScientificName.setText(ScientificName);
         mType.setText(Type);
         mWaterAmount.setText(WaterAmount);
-        //mWaterFrequency.setText(WaterFrequency);
+        mWaterFrequency.setText(WaterFrequency);
         mLastWatered.setText(LastWatered);
         mNextWatered.setText(NextWatered);
         mNickname.setText(Nickname);
         Picasso.get().load(plantImage).into(mPlantImage);
-        Log.d("PLANT INFO", WaterFrequency);//todo remove
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override

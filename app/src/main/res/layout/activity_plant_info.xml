@@ -308,7 +308,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nicknameView" />
+                app:layout_constraintTop_toBottomOf="@+id/nextWateredView" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -325,6 +325,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/noteView" />
 
             <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/next_water_date"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nicknameView" />
+
+            <TextView
                 android:id="@+id/nicknameView"
                 android:layout_width="0dp"
                 android:layout_height="31dp"
@@ -333,6 +347,16 @@
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView17"
                 app:layout_constraintEnd_toEndOf="@+id/noteView"
                 app:layout_constraintStart_toEndOf="@+id/textView17" />
+
+            <TextView
+                android:id="@+id/nextWateredView"
+                android:layout_width="0dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView18"
+                app:layout_constraintEnd_toEndOf="@+id/nicknameView"
+                app:layout_constraintStart_toEndOf="@+id/textView18" />
 
             <TextView
                 android:id="@+id/lastWateredInfo"
@@ -357,7 +381,7 @@
                 android:layout_marginTop="52dp"
                 android:text="Today"
                 app:layout_constraintStart_toEndOf="@+id/lastWateredInfo"
-                app:layout_constraintTop_toBottomOf="@+id/nicknameView" />
+                app:layout_constraintTop_toBottomOf="@+id/nextWateredView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
