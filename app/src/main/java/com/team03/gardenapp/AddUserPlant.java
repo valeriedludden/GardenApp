@@ -1,9 +1,11 @@
 package com.team03.gardenapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,16 +47,17 @@ public class AddUserPlant extends AppCompatActivity {
      *
      */
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         final TextView mFertilizer, mName, mNotes, mPetFriendly, mScientificName, mSunlight, mType, mWaterAmount, mwWaterFrequency;
-        Button btn;
         final FloatingActionButton btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
         final BasePlant basePlant = new BasePlant();
         final UserPlant userPlant = new UserPlant();
+
 
         super.onCreate(savedInstanceState);
 
@@ -71,8 +75,7 @@ public class AddUserPlant extends AppCompatActivity {
         final EditText mNickName = (EditText) findViewById(R.id.nickname);
         final EditText mLastWatered = (EditText) findViewById(R.id.lastWatered);
 
-        btnSave = (FloatingActionButton) findViewById(R.id.btnSave);
-
+        btnSave = (FloatingActionButton) findViewById(R.id.saveBtn);
 
         //THIS IS THE SPINNER
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -254,4 +257,3 @@ public class AddUserPlant extends AppCompatActivity {
         return true;
     }
 }
-

@@ -66,4 +66,5 @@
     <string name="plantTip">Plant Tip</string>
     <string name="today_s_plant_tip">Your Daily Gardening Tip:</string>
     <string name="nickname">nickname</string>
+    <string name="next_water_date">Next Water Date</string>
 </resources>
