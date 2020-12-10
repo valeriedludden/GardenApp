@@ -7,13 +7,19 @@ import android.graphics.Picture;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
+import java.util.Calendar;
 
 /**
  * Pull in data from Firebase and display to the use when the card is clicked
@@ -23,6 +29,13 @@ import com.squareup.picasso.Picasso;
 
 public class PlantInfo extends AppCompatActivity {
 
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef;
+
+    private Button mToday;
+
     final DatabaseReference[] image = new DatabaseReference[1];
 
     @Override
@@ -30,8 +43,13 @@ public class PlantInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info);
 
+        mToday = findViewById(R.id.today);
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
+
         final TextView mFertilizer, mName, mNotes, mPetFriendly, mScientificName, mSunlight,
-                mType, mWaterAmount, mWaterFrequency, mLastWatered, mNickname;
+                mType, mWaterAmount, mWaterFrequency, mLastWatered, mNickname, mNextWatered;
         final ImageView mPlantImage;
         final FloatingActionButton btnDelete = (FloatingActionButton) findViewById(R.id.btnDelete);
         final String user = FirebaseAuth.getInstance().getUid(); //gets the user's information
@@ -49,8 +67,9 @@ public class PlantInfo extends AppCompatActivity {
         String ScientificName = intent.getExtras().getString("Scientific Name");
         String Type = intent.getExtras().getString("Type");
         String WaterAmount = intent.getExtras().getString("Water Amount");
-        String plantImage = intent.getExtras().getString("Plant Image");
         String WaterFrequency = intent.getExtras().getString("Water Frequency");
+        String plantImage = intent.getExtras().getString("Plant Image");
+        String NextWatered = intent.getExtras().getString("NextWatered");
 
         mFertilizer = (TextView) findViewById(R.id.fertilizerView);
         mName = (TextView) findViewById(R.id.nameView);
@@ -60,10 +79,11 @@ public class PlantInfo extends AppCompatActivity {
         mSunlight = (TextView) findViewById(R.id.sunlightView);
         mType = (TextView) findViewById(R.id.typeView);
         mWaterAmount = (TextView) findViewById(R.id.waterAmountView);
-        mLastWatered = (TextView) findViewById(R.id.lastWatered);
+        //mWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
+        mLastWatered = (TextView) findViewById(R.id.lastWateredInfo);
+        mNextWatered = (TextView) findViewById(R.id.waterFrequencyView);
         mNickname = (TextView) findViewById(R.id.nicknameView);
         mPlantImage = (ImageView) findViewById(R.id.image_view);
-        mWaterFrequency = (TextView) findViewById(R.id.waterFrequencyView);
 
         mName.setText(Name);
         mSunlight.setText(Sunlight);
@@ -73,8 +93,9 @@ public class PlantInfo extends AppCompatActivity {
         mScientificName.setText(ScientificName);
         mType.setText(Type);
         mWaterAmount.setText(WaterAmount);
-        mWaterFrequency.setText(WaterFrequency);
+        //mWaterFrequency.setText(WaterFrequency);
         mLastWatered.setText(LastWatered);
+        mNextWatered.setText(NextWatered);
         mNickname.setText(Nickname);
         Picasso.get().load(plantImage).into(mPlantImage);
         Log.d("PLANT INFO", WaterFrequency);//todo remove
@@ -86,5 +107,27 @@ public class PlantInfo extends AppCompatActivity {
                 startActivity(new Intent(PlantInfo.this, MyPlants.class));
             }
         });
+
+        mToday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseUser user = mAuth.getCurrentUser();
+                String userID = user.getUid();
+                myRef.child("Users").child(userID).child("plants").child(plantId).child("lastWatered").setValue(todayIs());
+            }
+        });
+
     }
+
+    private String todayIs(){
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
+        final TextView mLastWatered;
+        mLastWatered = (TextView) findViewById(R.id.lastWateredInfo);
+        mLastWatered.setText(currentDate);
+
+        return currentDate;
+    }
+
 }

@@ -57,7 +57,7 @@
     <string name="plant_type_placeholder">Plant Type:</string>
     <string name="notes_placeholder">Notes:</string>
     <string name="what_do_you_want_to_call_your_plant">What do you want to call your plant?</string>
-    <string name="when_was_the_last_time_you_watered_this_plant">When was the last time you watered this plant?</string>
+    <string name="when_was_the_last_time_you_watered_this_plant">How often (in days) will you water this plant?</string>
     <string name="plant_info">Plant Info</string>
     <string name="user_info">User Info</string>
     <string name="signout">Signout</string>
