@@ -69,7 +69,7 @@ public class PlantInfo extends AppCompatActivity {
         String WaterAmount = intent.getExtras().getString("Water Amount");
         String WaterFrequency = intent.getExtras().getString("Water Frequency");
         String plantImage = intent.getExtras().getString("Plant Image");
-        String NextWatered = intent.getExtras().getString("NextWatered");
+        String NextWatered = intent.getExtras().getString("Next Watered");
 
         mFertilizer = (TextView) findViewById(R.id.fertilizerView);
         mName = (TextView) findViewById(R.id.nameView);

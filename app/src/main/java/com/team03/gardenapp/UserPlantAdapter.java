@@ -105,7 +105,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
         TextView tvName;
         TextView tvSunlight;
         TextView tvLastWatered;
-        TextView tvPetFriendly;
         ImageView imagePlant;
         ImageView ivPetIcon;
         public View view;
@@ -118,7 +117,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvSunlight = (TextView) itemView.findViewById(R.id.tvSunshine);
             tvLastWatered = (TextView) itemView.findViewById(R.id.tvLastWatered);
-            tvPetFriendly = (TextView) itemView.findViewById(R.id.tvIsPetFriendly);
             imagePlant = (ImageView) itemView.findViewById(R.id.imagePlant);
             ivPetIcon = (ImageView) itemView.findViewById(R.id.petIcon);
 
@@ -144,6 +142,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
                     intent.putExtra("Plant Image", selectedPlant.getPicture());
                     intent.putExtra("Pet Friendly", selectedPlant.getIsPetFriendly());
                     intent.putExtra("Water Frequency", selectedPlant.getWaterFrequency());
+                    intent.putExtra("Next Watered", selectedPlant.getNextWatered());
 
                     view.getContext().startActivity(intent);
                 }
@@ -154,7 +153,6 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
             tvName.setText(plant.getName());
             tvSunlight.setText(plant.getSunlight());
             tvLastWatered.setText(String.valueOf(plant.getLastWatered()));
-            tvPetFriendly.setText(plant.getIsPetFriendly());
 
             if(plant.getIsPetFriendly().equalsIgnoreCase("Yes")){
                 ivPetIcon.setImageResource(R.drawable.paw);
@@ -168,13 +166,7 @@ public class UserPlantAdapter extends RecyclerView.Adapter<UserPlantAdapter.User
 
         @Override
         public void onClick(View view) {
-            //When plant card view is clicked, it selects the plant and opens the Plant Info page.
-            int position = getAdapterPosition();
-            UserPlant selectedPlant = userPlants.get(position);
-//            Intent intent = new Intent(view.getContext(), UserPlantActivity.class);
-//            intent.putExtra("User Plant", selectedPlant);
-//            view.getContext().startActivity(intent);
-        }
 
+        }
     }
 }
