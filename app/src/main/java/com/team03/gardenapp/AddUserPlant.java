@@ -50,7 +50,6 @@ public class AddUserPlant extends AppCompatActivity {
         final FloatingActionButton btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
-//        final BasePlant basePlant = new BasePlant();
         final UserPlant userPlant = new UserPlant();
 
 
