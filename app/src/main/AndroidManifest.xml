@@ -47,7 +47,6 @@
         </activity>
 
 
-        <activity android:name=".MainActivityScreen" />
         <activity
             android:name=".AddUserPlant"
             android:label="Add Plant"
