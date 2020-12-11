@@ -1,6 +1,7 @@
 package com.team03.gardenapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -248,12 +249,41 @@ public class AddUserPlant extends AppCompatActivity {
      * @return true
      */
 
-
-    //Create the save button at the top of AddPlants page
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.save_menu, menu);
+        inflater.inflate(R.menu.bottom_navigation_menu, menu);
         return true;
+    }
+
+    /**
+     * <p> {@link #onOptionsItemSelected(MenuItem)} Used to determine where to send the user when a menu option is selected</p>
+     * @param item
+     * @return
+     */
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.navigation_plants:
+                Intent intent = new Intent(this, MyPlants.class);
+                startActivity(intent);
+                return true;
+            case R.id.navigation_home:
+                Intent intent2 = new Intent(this, BottomNavigation.class);
+                startActivity(intent2);
+                return true;
+
+            case R.id.btnSignout:
+                Intent intent3 = new Intent(this, LoginActivity.class);
+                startActivity(intent3);
+                return true;
+            case R.id.user_info:
+                Intent intent4 = new Intent(this, GetUserInfo.class);
+                startActivity(intent4);
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
