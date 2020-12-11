@@ -25,9 +25,8 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.team03.gardenapp", appContext.getPackageName());
     }
-    
     @Test
-    public void checkLogin(){
+    public void practiceTest() {
 
     }
 }
