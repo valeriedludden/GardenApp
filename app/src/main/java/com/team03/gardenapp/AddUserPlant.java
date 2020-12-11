@@ -3,21 +3,17 @@ package com.team03.gardenapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,12 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 public class AddUserPlant extends AppCompatActivity {
@@ -56,7 +50,6 @@ public class AddUserPlant extends AppCompatActivity {
         final FloatingActionButton btnSave;
         final DatabaseReference[] reff = new DatabaseReference[1];
         final String[] userInput = new String[1];
-        final BasePlant basePlant = new BasePlant();
         final UserPlant userPlant = new UserPlant();
 
 
@@ -140,10 +133,6 @@ public class AddUserPlant extends AppCompatActivity {
                                 final String waterFrequency = dataSnapshot.child("waterFrequency").getValue().toString();
                                 final String userID = FirebaseAuth.getInstance().getUid();
                                 final String petFriendly = dataSnapshot.child("petFriendly").getValue().toString();
-                                Log.d("ADD PLANT", "PET FRIENDLY = " + petFriendly);
-
-                                //todo we can remove this section if we make sure that each plant has pet info (will need to set petFriedly above then)
-
 
                                 final String imageUrl = dataSnapshot.child("picture").getValue().toString();
                                 ImageView imageView = findViewById(R.id.image_view);
@@ -159,7 +148,6 @@ public class AddUserPlant extends AppCompatActivity {
                                 mWaterAmount.setText(waterAmount);
                                 mwWaterFrequency.setText(waterFrequency);
                                 mNickName.setText("nickname");
-                                //mLastWatered.setText("1234");
                                 mPetFriendly.setText(petFriendly);
 
 
@@ -174,7 +162,6 @@ public class AddUserPlant extends AppCompatActivity {
                                     public void onClick(View v) {
 
                                         final String nickName = mNickName.getText().toString();
-                                        //final int lastWatered = Integer.parseInt(mLastWatered.getText().toString());
                                         final String nextWatered = mLastWatered.getText().toString();
 
                                         userPlant.setFertilizer(fertilizer);
@@ -194,24 +181,17 @@ public class AddUserPlant extends AppCompatActivity {
 
                                         System.out.println(imageUrl);
 
-                                        Random random = new Random();
-                                        int counter = random.nextInt(32768);
-
                                         FirebaseDatabase databasePush = FirebaseDatabase.getInstance();
                                         DatabaseReference databasePushReference = databasePush.getReference();
 
                                         //creates a unique string to be used as the plant ID.
                                         String plantId = UUID.randomUUID().toString();
 
-                                        //New coded added by Valerie to add a unique Id for each user plant todo remove this comment
                                         databasePushReference.child("Users").child(userID).child("plants").child(plantId).setValue(userPlant);
-                                        //Darrin's original code todo remove if we are keeping the plantId
-                                        //databasePushReference.child("Users").child(userID).child("plants").child(name+counter).setValue(basePlant);
 
                                         Toast.makeText(AddUserPlant.this, "Plant has been added to your collection!", Toast.LENGTH_SHORT).show();
 
                                         mNickName.setText("nickname");
-                                        //mLastWatered.setText("1234");
                                     }
                                 });
                             }

@@ -99,9 +99,6 @@ public class MainActivityScreen extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            // Tried to get the navigation buttons to open the
-            // correct screen but still trying to figure that out - Jacob
-
             case R.id.navigation_plants:
                 Intent intent = new Intent(this, MyPlants.class);
                 startActivity(intent);
