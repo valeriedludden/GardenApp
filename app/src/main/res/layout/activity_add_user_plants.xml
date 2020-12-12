@@ -163,7 +163,7 @@
             <TextView
                 android:id="@+id/fertilizerView"
                 android:layout_width="0dp"
-                android:layout_height="31dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:text="@string/fertilizer"
@@ -173,8 +173,8 @@
 
             <TextView
                 android:id="@+id/noteView"
-                android:layout_width="112dp"
-                android:layout_height="29dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
