@@ -67,4 +67,6 @@
     <string name="today_s_plant_tip">Your Daily Gardening Tip:</string>
     <string name="nickname">nickname</string>
     <string name="next_water_date">Next Water Date</string>
+    <string name="last_time_watered">Last time Watered</string>
+    <string name="today">Today</string>
 </resources>

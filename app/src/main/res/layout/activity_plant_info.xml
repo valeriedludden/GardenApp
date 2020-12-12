@@ -17,17 +17,17 @@
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/dialog_holo_light_frame" />
+        app:srcCompat="@drawable/white_delete_line" />
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="414dp"
-        android:layout_height="685dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -156,8 +156,8 @@
 
             <TextView
                 android:id="@+id/noteView"
-                android:layout_width="0dp"
-                android:layout_height="81dp"
+                android:layout_width="309dp"
+                android:layout_height="30dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
@@ -303,7 +303,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
-                android:text="Last time Watered"
+                android:text="@string/last_time_watered"
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -361,11 +361,11 @@
             <TextView
                 android:id="@+id/lastWateredInfo"
                 android:layout_width="170dp"
-                android:layout_height="43dp"
+                android:layout_height="26dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
-                android:layout_marginTop="8dp"
-                android:text="Last time Watered"
+                android:layout_marginTop="24dp"
+                android:text="@string/last_time_watered"
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -376,12 +376,11 @@
                 android:id="@+id/today"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="52dp"
-                android:text="Today"
-                app:layout_constraintStart_toEndOf="@+id/lastWateredInfo"
-                app:layout_constraintTop_toBottomOf="@+id/nextWateredView" />
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:text="@string/today"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lastWateredInfo"
+                app:layout_constraintStart_toEndOf="@+id/lastWateredInfo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
